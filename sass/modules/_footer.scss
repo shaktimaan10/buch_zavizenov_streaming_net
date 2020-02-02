@@ -1,0 +1,27 @@
+// 
+// Styles for the mobile version
+// 
+footer{
+    width:100%;
+    height:50px;
+    margin-top: 70px;
+    background-color:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-logo{
+    width:150px;
+
+    img{
+        width:100%;
+    }
+}
