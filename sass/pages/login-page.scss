@@ -1,0 +1,150 @@
+//
+// Styles for the mobile version
+// 
+.login-main{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    background-color: $purple;
+}
+
+.login-form-bg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:320px;
+    height:400px;
+    -webkit-box-shadow: 0px 1px 10px 5px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0px 1px 10px 5px rgba(0,0,0,0.05);
+    box-shadow: 0px 1px 10px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.login-form-container{
+    width:300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-logo{
+    width:200px;
+
+    img{
+        width:100%;
+    }
+}
+
+.login-form-form{
+    margin-top:55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .login-form-column{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom:35px;
+    }
+
+    label{
+        text-align: left;
+        font-family: 'Lato', sans-serif;
+        font-weight: 200;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    input{
+        border: 0px solid transparent;
+        border-bottom: 1px solid $purple;
+        width:250px;
+        font-size: 14px;
+    }
+
+    button{
+        margin-top:10px;
+        width:250px;
+        height:45px;
+        background-color:$purple;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-size:14px;
+    }
+}
+
+// 
+// Styles for the tablet version
+//
+@media screen and (min-width:720px){
+    .login-form-bg{
+        width:500px;
+        height:580px;
+    }
+
+    .login-form-container{
+        width:400px;
+    }
+
+    .login-form-logo{
+        width:300px;
+    }
+
+    .login-form-form{
+        margin-top:77px;
+
+        .login-form-column{
+            margin-bottom:55px;
+        }
+
+        label{
+            font-size:20px;
+            margin-bottom: 15px;
+        }
+
+        input{
+            width:300px;
+            font-size:16px;
+        }
+
+        button{
+            width:270px;
+            height:50px;
+            font-size:16px;
+        }
+    } 
+}
+
+// 
+// Styles for the desktop version
+// 
+@media screen and (min-width:1200px){
+    .login-form-bg{
+        width:500px;
+        height:540px;
+    }
+
+    .login-form-form{
+        label{
+            font-size:16px;
+        }
+
+        button{
+            cursor: pointer;
+            transition: all 0.7s ease-in-out;
+        }
+
+        button:hover{
+            -webkit-box-shadow: 0px 1px 10px 5px rgba(102,45,145,0.4);
+            -moz-box-shadow: 0px 1px 10px 5px rgba(102,45,145,0.4);
+            box-shadow: 0px 1px 10px 5px rgba(102,45,145,0.4);
+        }
+    }
+}
