@@ -46,6 +46,18 @@ header{
     color: white;
 }
 
+.header-menu{
+    display: none;
+}
+
+.header-burger{
+    height:20px;
+
+    img{
+        height: 100%;
+    }
+}
+
 // 
 // Styles for the tablet version
 // 
@@ -61,6 +73,54 @@ header{
     .header-cta{
         width:150px;
     }
+
+    .header-burger{
+        display: none;
+    }
+
+    .header-menu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header-nav-link{
+        text-decoration: none;
+        color:black;
+        font-family: 'Raleway', sans-serif;
+        font-size:14px;
+        margin-left:30px;
+        transition: 0.7s all ease-in-out;
+    }
+
+    .header-nav-link:first-child{
+        margin-left:0px;
+    }
+
+    .header-user{
+        height:50px;
+        width:50px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        margin-left:50px;
+
+        img{
+            min-width:100%;
+            min-height:100%;
+            max-height:150%;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 // 
@@ -70,5 +130,9 @@ header{
     .header-cta{
         width:178px;
         height:38px;
+    }
+
+    .header-nav-link:hover{
+        color: $purple;
     }
 }
