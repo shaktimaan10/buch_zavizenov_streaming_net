@@ -4,17 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
     <title>Roku Flashback</title>
 </head>
 <body id="app">
-    <header></header>
+    <header>
+        <div class="container header-container">
+            <a href="catalog.html" class="header-logo">
+                <img src="images/logo.svg" alt="Roku logo">
+            </a>
+            <div class="header-menu">
+                <nav class="header-nav">
+                    <a href="#" class="header-nav-link">Movies</a>
+                    <a href="#" class="header-nav-link">TV</a>
+                    <a href="#" class="header-nav-link">Music</a>
+                </nav>
+                <a href="user-settings" class="header-user">
+                    <img src="images/dog.jpg" alt="user-icon">
+                </a>
+            </div>
+            <div class="header-burger">
+                <img src="images/burger.svg" alt="burger icon">
+            </div>
+        </div>
+    </header>
     <main>
-        This is a catalogue after login! 
+        <section class="banner-section">
+            <div class="container banner-section-container">
+                <div class="banner-slider">
+                    <div class="banner-arrow nabber-arrow-left">
+                        <img src="images/left-purple.svg" alt="left-arrow">
+                    </div>
+                    <div class="banner-slider-cover">
+                        <div class="banner-slider-content">
+                            <div class="banner-slider-movie">
+                                <img src="images/device-mockup.jpg" alt="">
+                            </div>
+                            <div class="banner-slider-movie">
+                                <img src="images/hero.png" alt="">
+                            </div>
+                            <div class="banner-slider-movie">
+                                <img src="images/device-mockup.jpg" alt="">
+                            </div>
+                            <div class="banner-slider-movie">
+                                <img src="images/hero.png" alt="">
+                            </div>
+                            <div class="banner-slider-movie">
+                                <img src="images/device-mockup.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-arrow nabber-arrow-right">
+                        <img src="images/right-purple.svg" alt="right-arrow">
+                    </div>
+                </div>
+                <div class="banner-rounds">
+                    <div class="banner-round banner-round-active"></div>
+                    <div class="banner-round"></div>
+                    <div class="banner-round"></div>
+                    <div class="banner-round"></div>
+                    <div class="banner-round"></div>
+                </div>
+            </div>
+        </section>
+        <section class="content-slider-section recommended-section"></section>
     </main>
-    <footer></footer>
+    <footer>
+        <div class="container footer-container">
+            <a href="login.html" class="footer-logo">
+                <img src="images/logo-white.svg" alt="flashback logo">
+            </a>
+            <p>Roku Flashback © 2020</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script src="js/main.js" type="module"></script>
 </body>
