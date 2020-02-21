@@ -16,3 +16,6 @@
 
 //     }
 // })
+
+import './components/preview-lighbox.js';
+import './components/mobile-nav.js';
