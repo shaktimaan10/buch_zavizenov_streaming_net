@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
+    <title>Roku Flashback</title>
+</head>
+<body>
+    <div class="mobile-nav">
+        <div class="mobile-nav-cross">
+            <img src="images/cross-purple.svg" alt="cross-btn">
+        </div>
+        <div class="mobile-nav-list">
+            <a href="catalog.html">Home</a>
+            <a href="catalog.html">Movies</a>
+            <a href="catalog.html">TV</a>
+            <a href="catalog.html">Msic</a>
+        </div>
+    </div>
+    <header>
+        <div class="container header-container">
+            <a href="catalog.html" class="header-logo">
+                <img src="images/logo.svg" alt="Roku logo">
+            </a>
+            <div class="header-menu">
+                <nav class="header-nav">
+                    <a href="#" class="header-nav-link">Movies</a>
+                    <a href="#" class="header-nav-link">Tv</a>
+                    <a href="#" class="header-nav-link">Music</a>
+                </nav>
+                <a href="user-settings" class="header-user">
+                    <img src="images/dog.jpg" alt="user-icon">
+                </a>
+            </div>
+            <div class="header-burger">
+                <img src="images/burger.svg" alt="burger icon">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="profiles-section">
+            <div class="container profiles-container">
+                <h1>Choose profile</h1>
+                <div class="profiles-row">
+                    <div class="single-profile single-profile-active">
+                        <img src="images/dog.jpg" alt="profile-img">
+                        <h4>shaktimaan</h4>
+                    </div>
+                    <div class="single-profile">
+                        <img src="images/dog.jpg" alt="profile-img">
+                        <h4>shaktimaan</h4>
+                    </div>
+                    <div class="single-profile">
+                        <img src="images/dog.jpg" alt="profile-img">
+                        <h4>shaktimaan</h4>
+                    </div>
+                    <div class="single-profile">
+                        <img src="images/dog.jpg" alt="profile-img">
+                        <h4>shaktimaan</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="profile-change-section">
+            <div class="container profile-change-container">
+                <div class="change-img">
+                    <img src="images/dog.jpg" alt="profile-img">
+                </div>
+                <div class="change-details">
+                    <form action="">
+                        <label for="">Name</label>
+                        <input type="text" value="shaktimaan">
+                        <label for="">Parental control</label>
+                        <select id="parental-contro" name="restriction">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button type="submit">Save changes</button>
+                    </form>
+                    <div class="change-details-delete">Delete profile</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-container">
+            <a href="login.html" class="footer-logo">
+                <img src="images/logo-white.svg" alt="flashback logo">
+            </a>
+            <p>Roku Flashback © 2020</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

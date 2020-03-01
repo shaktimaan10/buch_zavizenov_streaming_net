@@ -1,0 +1,266 @@
+// 
+// Styles for the mobile version
+//
+.profiles-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
+
+    h1{
+        color:$purple;
+    }
+}
+
+.profiles-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:40px;
+}
+
+.single-profile{
+    width:320px;
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.7s all ease-in-out;
+
+    h4{
+        margin-top:15px;
+        color: black;
+    }
+
+    img{
+        width:80%;
+        height:190px;
+    }
+}
+
+.single-profile-active{
+    background-color: $purple;
+
+    h4{
+        color:white;
+    }
+}
+
+
+.profile-change-section{
+    background-color: $purple;
+    margin-top: 60px;
+}
+
+.profile-change-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-img{
+    width:100%;
+    height:320px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 50px;
+
+    img{
+        position: absolute;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        height:100%;
+        min-width: 100%;
+    }
+}
+
+.change-details{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:50px;
+    margin-bottom: 50px;
+
+    form{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label{
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input{
+            font-family: 'Lato', sans-serif;
+            border: 1px solid white;
+            background-color: transparent;
+            margin-bottom: 30px;
+            height:40px;
+            width:320px;
+            text-align: center;
+            color: white;
+            border-radius: 30px;
+        }
+
+        select{
+            font-family: 'Lato', sans-serif;
+            border: 1px solid white;
+            background-color: transparent;
+            margin-bottom: 40px;
+            height:40px;
+            width:200px;
+            text-align: center;
+            color: white;
+            border-radius: 30px;
+            padding-left: 90px;
+        }
+
+        option{
+            color:black;
+            text-align: center;
+        }
+
+        button{
+            font-family: 'Lato', sans-serif;
+            width:250px;
+            height:40px;
+            color: white;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+    }
+}
+
+.change-details-delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    width:250px;
+    height:40px;
+    color: white;
+    background-color: red;
+    border-radius: 30px;
+    margin-top:50px;
+    font-size: 14px;
+}
+
+
+// 
+// Styles for tablet version
+// 
+@media screen and (min-width:720px){
+    .profiles-container{
+        margin-top:60px;
+    }
+
+    .profiles-row{
+        margin-top:50px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .single-profile{
+        width:50%;
+        border: none;
+    }
+}
+
+
+// 
+// Styles for desktop version
+// 
+@media screen and (min-width:1200px){
+    .profiles-container{
+        margin-top:80px;
+    }
+
+    .profiles-row{
+        margin-top:60px;
+    }
+
+    .single-profile{
+        width:25%;
+        cursor:pointer;
+    }
+
+    .single-profile:hover{
+        background-color: black;
+
+        h4{
+            color:white;
+        }
+    }
+
+    .profile-change-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top:50px;
+        margin-bottom: 50px;
+    }
+
+    .change-img{
+        margin:0;
+        width:35%;
+    }
+
+    .change-details{
+        margin:0;
+        width:400px;
+        align-items: flex-start;
+        margin-left: 90px;
+
+        form{
+            align-items: flex-start;
+
+            input{
+                margin-bottom: 25px;
+                width:350px;
+            }
+
+            label{
+                margin-bottom: 10px;
+            }
+
+            button{
+                cursor:pointer;
+                transition: 0.7s all ease-in-out;
+            }
+
+            button:hover{
+                background-color: white;
+                color: $purple;
+            }
+
+            select{
+                margin-bottom: 35px;
+            }
+        }
+    }
+
+    .change-details-delete{
+        margin-top:40px;
+        cursor:pointer;
+        transition: 0.7s all ease-in-out;
+        border: 1px solid transparent;
+    }
+
+    .change-details-delete:hover{
+        border: 1px solid white;
+    }
+}
