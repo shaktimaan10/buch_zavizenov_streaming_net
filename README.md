@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This is a streaming app build with Vue.js
+This is a streaming app build with Vue.js + PHP that allows users to watch movies, tv shows and music videos. It has a parental control function for kids' accounts and various JS animations, sliders, lightboxes, etc.
 
 ## Course
 
