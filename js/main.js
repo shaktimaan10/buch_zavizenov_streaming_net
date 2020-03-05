@@ -3,30 +3,38 @@ import './components/preview-lighbox.js';
 import './components/mobile-nav.js';
 
 import LoginComponent from "./components/LoginComponent.js";
+import CatalogComponent from "./components/CatalogComponent.js";
+import PreviewComponent from "./components/PreviewComponent.js";
+import StartComponent from "./components/StartComponent.js";
+import SettingsComponent from "./components/SettingsComponent.js";
 
 // Vue component
-let router = new VueRouter({
+const router = new VueRouter({
     // set routes
     routes: [
-      { path: '/', redirect: { name: "login" } },
+      { path: '/', redirect: { name: "start" } },
+      { path: '/catalog', name:"catalog", component: CatalogComponent},
+      { path: '/start', name:"start", component: StartComponent},
+      { path: '/single', name:"single", component: PreviewComponent},
       { path: '/login', name: "login", component: LoginComponent },
+      { path: '/settings', name: "settings", component: SettingsComponent}
     ]
 });
 
 const vm = new Vue({
 
-    el: "#login",
+    el: "#app",
 
     data: {
       authenticated: false,
       administrator: false,
 
-      mockAccount: {
-        username: "user",
-        password: "password"
-      },
+      // mockAccount: {
+      //   username: "user",
+      //   password: "password"
+      // },
 
-      user: [],
+      user: []
 
       //currentUser: {},
     },
@@ -50,7 +58,7 @@ const vm = new Vue({
         // delete local session
 
         // push user back to login page
-        this.$router.push({ path: "/login" });
+        this.$router.push({ path: "/start" });
         this.authenticated = false;
       }
     },
