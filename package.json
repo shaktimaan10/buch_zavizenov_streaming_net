@@ -1,0 +1,30 @@
+{
+  "name": "buch_zavizenov_streaming_net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaktimaan10/buch_zavizenov_streaming_net.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaktimaan10/buch_zavizenov_streaming_net/issues"
+  },
+  "homepage": "https://github.com/shaktimaan10/buch_zavizenov_streaming_net#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}
