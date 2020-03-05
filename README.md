@@ -1,5 +1,3 @@
-# Roku Flashback
-
 ![Logo](/images/logo.svg)
 
 ## Project Description
