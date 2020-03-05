@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:300,400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.1.3/vue-router.min.js"></script>
     <title>Roku Flashback</title>
 </head>
 <body>
@@ -22,64 +23,37 @@
             <a href="catalog.html">Msic</a>
         </div>
     </div>
-    <header>
-        <div class="container header-container">
-            <a href="catalog.html" class="header-logo">
-                <img src="images/logo.svg" alt="Roku logo">
-            </a>
-            <a href="login.html" class="header-cta">Log In</a>
+    <div class="preview-section-lightbox">
+        <div class="preview-section-cross">
+            <img src="images/cross.svg" alt="close-icon">
         </div>
-    </header>
-    <main>
-        <section class="hero-section">
-            <div class="container hero-section-container">
-                <h1>Introducing the best streaming service</h1>
-                <h3>from your favorite media players manufacturer</h3>
-                <a href="login.html" class="hero-cta">Try it now!</a>
-            </div>
-        </section>
-        <section class="reason-section">
-            <div class="container reason-section-container">
-                <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
+        <video class="preview-section-lightbox-video" controls>
+            <source src="video/dunkirk.mp4" type="video/mp4">
+        </video>
+    </div> 
+    <main id="app">
+        <header>
+            <div class="container header-container">
+                <router-link to="/catalog" class="header-logo">
+                    <img src="images/logo.svg" alt="Roku logo">
+                </router-link>
+                <div class="header-menu">
+                    <nav class="header-nav" v-if="authenticated">
+                        <a href="#" class="header-nav-link">Movies</a>
+                        <a href="#" class="header-nav-link">Tv</a>
+                        <a href="#" class="header-nav-link">Music</a>
+                    </nav>
+                    <router-link to="/settings" class="header-user" v-if="authenticated">
+                        <img src="images/dog.jpg" alt="user-icon">
+                    </router-link>
                 </div>
-                <div class="reason-section-text">
-                    <h2>This is why!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="reason-section">
-            <div class="container reason-section-container">
-                <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
-                </div>
-                <div class="reason-section-text">
-                    <h2>This is why2!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
+                <router-link v-if="!authenticated" to="/login" href="login.html" class="header-cta">Log In</router-link>
+                <div class="header-burger">
+                    <img src="images/burger.svg" alt="burger icon">
                 </div>
             </div>
-        </section>
-        <section class="reason-section">
-            <div class="container reason-section-container">
-                <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
-                </div>
-                <div class="reason-section-text">
-                    <h2>This is why3!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </div>
-            </div>
-        </section>
+        </header>
+        <router-view @authenticated="setAuthenticated"></router-view>
     </main>
     <footer>
         <div class="container footer-container">
@@ -89,7 +63,6 @@
             <p>Roku Flashback © 2020</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script src="js/main.js" type="module"></script>
 </body>
 </html>

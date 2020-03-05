@@ -1,16 +1,25 @@
 export default {
     template: `
-    <form action="includes/index.php" method="POST" class="login-form-form">
-        <div class="login-form-column">
-            <label for="username-input">Username</label>
-            <input id="username-input" type="text" name="username">
+    <div class="login-main">
+        <div class="login-form-bg">
+            <div class="login-form-container">
+                <router-link to="/start" class="login-form-logo">
+                    <img src="images/logo.svg" alt="Flashback logo">
+                </router-link>
+                <form @submit.prevent="login" class="login-form-form">
+                    <div class="login-form-column">
+                        <label for="username-input">Username</label>
+                        <input v-model="input.username" id="username-input" type="text" name="username">
+                    </div>
+                    <div class="login-form-column">
+                        <label for="password-input">Password</label>
+                        <input v-model="input.password" id="password-input" type="password" name="password">
+                    </div>
+                    <button type="submit" class="login-form-btn login-btn">Log In</button>
+                </form>
+            </div>
         </div>
-        <div class="login-form-column">
-            <label for="password-input">Password</label>
-            <input id="password-input" type="password" name="password">
-        </div>
-        <button type="submit" class="login-form-btn login-btn">Log In</button>
-    </form>
+    </div>
      `,
 
     data() {
@@ -45,6 +54,7 @@ export default {
                     // we got a user back, let's set authneticate event
                     this.$emit("authenticated", true, data[0]);
                     // reroute to user component so we can see all user
+                    this.$router.push({ path: "/catalog" });
                 })
                 .catch((error) => console.log(error));
             } else {
