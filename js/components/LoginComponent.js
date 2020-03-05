@@ -3,9 +3,9 @@ export default {
     <div class="login-main">
         <div class="login-form-bg">
             <div class="login-form-container">
-                <a href="index.html" class="login-form-logo">
+                <router-link to="/start" class="login-form-logo">
                     <img src="images/logo.svg" alt="Flashback logo">
-                </a>
+                </router-link>
                 <form @submit.prevent="login" class="login-form-form">
                     <div class="login-form-column">
                         <label for="username-input">Username</label>

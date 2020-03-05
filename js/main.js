@@ -13,11 +13,41 @@ const router = new VueRouter({
     // set routes
     routes: [
       { path: '/', redirect: { name: "start" } },
-      { path: '/catalog', name:"catalog", component: CatalogComponent},
+      { path: '/catalog',
+        name:"catalog",
+        component: CatalogComponent,
+        beforeEnter: (to,from,next) => {
+          if(vm.authenticated == false){
+            next("/login");
+          } else {
+            next();
+          }  
+        }
+      },
       { path: '/start', name:"start", component: StartComponent},
-      { path: '/single', name:"single", component: PreviewComponent},
+      { path: '/single', 
+        name:"single", 
+        component: PreviewComponent,
+        beforeEnter: (to,from,next) => {
+          if(vm.authenticated == false){
+            next("/login");
+          } else {
+            next();
+          }  
+        }
+      },
       { path: '/login', name: "login", component: LoginComponent },
-      { path: '/settings', name: "settings", component: SettingsComponent}
+      { path: '/settings', 
+        name: "settings", 
+        component: SettingsComponent,
+        beforeEnter: (to,from,next) => {
+          if(vm.authenticated == false){
+            next("/login");
+          } else {
+            next();
+          }  
+        }
+      }
     ]
 });
 
@@ -66,12 +96,12 @@ const vm = new Vue({
     router: router
 });
 
-router.beforeEach((to,from,next) => {
-    console.log('router guard fired');
+// router.beforeEach((to,from,next) => {
+//     console.log('router guard fired');
 
-    if(vm.authenticated == false){
-      next("/login");
-    } else {
-      next();
-    }
-});
+//     if(vm.authenticated == false){
+//       next("/login");
+//     } else {
+//       next();
+//     }
+// });
