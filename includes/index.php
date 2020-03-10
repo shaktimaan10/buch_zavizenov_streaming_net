@@ -18,7 +18,12 @@
      
         echo json_encode($tv);
     } 
-    
+
+    if(isset($_GET["getRecomContent"])) {
+        $recom = getRecomContent($pdo);
+     
+        echo json_encode($recom);
+    } 
 
     if (isset($_GET['user'])) {
         $user = getUser($pdo);

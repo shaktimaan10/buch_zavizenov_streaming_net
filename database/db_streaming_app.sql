@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 10, 2020 at 04:37 PM
+-- Generation Time: Mar 10, 2020 at 09:57 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `tbl_movies` (
   `movie_poster` varchar(40) NOT NULL,
   `movie_video` varchar(40) NOT NULL,
   `movie_date` varchar(30) NOT NULL,
+  `movie_score` float NOT NULL,
   `movie_pg` int(1) NOT NULL,
   PRIMARY KEY (`movie_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
@@ -46,26 +47,26 @@ CREATE TABLE IF NOT EXISTS `tbl_movies` (
 -- Dumping data for table `tbl_movies`
 --
 
-INSERT INTO `tbl_movies` (`movie_id`, `movie_name`, `movie_desc`, `movie_country`, `movie_genre`, `movie_poster`, `movie_video`, `movie_date`, `movie_pg`) VALUES
-(1, 'Parasite', 'A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.', 'South Korea', 'Comedy, Drama, Thriller', 'parasite.jpg', 'parasite.mp4', '2019', 4),
-(2, 'Once Upon a Time... in Hollywood', 'A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood\'s Golden Age in 1969 Los Angeles.', 'USA', 'Comedy,Drama ', 'once.jpg', 'once.mp4', '2019', 4),
-(3, 'Rocketman', 'A musical fantasy about the fantastical human story of Elton John\'s breakthrough years.', 'USA', 'Biography, Drama, Music', 'rocketman.jpg', 'rocketman.mp4', '2019', 4),
-(4, 'Goodfellas', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.', 'USA', 'Biography, Crime, Drama', 'goodfellas.jpg', 'goodfellas.mp4', '1990', 4),
-(5, 'Teenage Mutant Ninja Turtles', 'Four teenage mutant ninja turtles emerge from the shadows to protect New York City from a gang of criminal ninjas.', 'USA', 'Action, Adventure, Comedy', 'tmnt.jpg', 'tmnt.mp4', '1990', 1),
-(6, 'The Godfather: Part III', 'In the midst of trying to legitimize his business dealings in New York City and Italy in 1979, aging Mafia Don Michael Corleone seeks to avow for his sins, while taking his nephew Vincent Mancini under his wing.', 'USA', 'Crime, Drama', 'godfather3.jpg', 'godfather3.mp4', '1990', 4),
-(7, 'The Shining', 'A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.', 'USA', 'Drama, Horror', 'shining.jpg', 'shining.mp4', '1980', 4),
-(8, 'Raging Bull', 'The life of boxer Jake LaMotta, whose violence and temper that led him to the top in the ring destroyed his life outside of it.', 'USA', 'Biography, Drama, Sport ', 'raging-bull.jpg', 'raging-bull.mp4', '1980', 4),
-(9, 'Full Metal Jacket', 'A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.', 'USA', 'Drama, War', 'full-metal-jacket.jpg', 'full-metal-jacket.mp4', '1987', 4),
-(10, 'Fear and Loathing in Las Vegas', 'An oddball journalist and his psychopathic lawyer travel to Las Vegas for a series of psychedelic escapades.', 'USA', 'Adventure, Comedy, Drama', 'fear-loathing.jpg', 'fear-loathing.mp4', '1998', 4),
-(11, 'Jaws', 'When a killer shark unleashes chaos on a beach community, it\'s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.', 'USA', 'Adventure, Drama, Thriller', 'jaws.jpg', 'jaws.mp4', '1975', 1),
-(12, 'A Clockwork Orange', 'In the future, a sadistic gang leader is imprisoned and volunteers for a conduct-aversion experiment, but it doesn\'t go as planned.', 'USA', 'Crime, Drama, Sci-Fi', 'clockwork-orange.jpg', 'clockwork-orange.mp4', '1971', 4),
-(13, 'The Godfather', 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'USA', 'Crime, Drama ', 'godfather.jpg', 'godfather.mp4', '1972', 4),
-(14, 'Psycho', 'A Phoenix secretary embezzles forty thousand dollars from her employer\'s client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.', 'USA', 'Horror, Mystery, Thriller', 'psycho.jpg', 'psycho.mp4', '1960', 4),
-(15, 'The Good, the Bad and the Ugly', 'A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.', 'USA', 'Western', 'good-bad-ugly.jpg', 'good-bad-ugly.mp4', '1966', 4),
-(16, 'Spartacus', 'The slave Spartacus leads a violent revolt against the decadent Roman Republic.', 'Brazil', 'Adventure, Biography, Drama', 'spartacus.jpg', 'spartacus.mp4', '1960', 2),
-(17, 'Sunset Blvd.', 'A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return.', 'Australia', 'Drama, Film-Noir', 'sunset-blvd.jpg', 'sunset-blvd.mp4', '1950', 0),
-(18, 'Cinderella', 'When Cinderella\'s cruel stepmother prevents her from attending the Royal Ball, she gets some unexpected help from the lovable mice Gus and Jaq, and from her Fairy Godmother.', 'USA', 'Animation, Family, Fantasy', 'cinderella.jpg', 'cinderella.mp4', '1950', 0),
-(19, 'Singin\' in the Rain', 'A silent film production company and cast make a difficult transition to sound.', 'USA', 'Comedy, Musical, Romance ', 'singin-rain.jpg', 'singin-rain.mp4', '1952', 0);
+INSERT INTO `tbl_movies` (`movie_id`, `movie_name`, `movie_desc`, `movie_country`, `movie_genre`, `movie_poster`, `movie_video`, `movie_date`, `movie_score`, `movie_pg`) VALUES
+(1, 'Parasite', 'A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.', 'South Korea', 'Comedy, Drama, Thriller', 'parasite.jpg', 'parasite.mp4', '2019', 8.6, 4),
+(2, 'Once Upon a Time... in Hollywood', 'A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood\'s Golden Age in 1969 Los Angeles.', 'USA', 'Comedy,Drama ', 'once.jpg', 'once.mp4', '2019', 7.7, 4),
+(3, 'Rocketman', 'A musical fantasy about the fantastical human story of Elton John\'s breakthrough years.', 'USA', 'Biography, Drama, Music', 'rocketman.jpg', 'rocketman.mp4', '2019', 7.3, 4),
+(4, 'Goodfellas', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.', 'USA', 'Biography, Crime, Drama', 'goodfellas.jpg', 'goodfellas.mp4', '1990', 8.7, 4),
+(5, 'Teenage Mutant Ninja Turtles', 'Four teenage mutant ninja turtles emerge from the shadows to protect New York City from a gang of criminal ninjas.', 'USA', 'Action, Adventure, Comedy', 'tmnt.jpg', 'tmnt.mp4', '1990', 6.8, 1),
+(6, 'The Godfather: Part III', 'In the midst of trying to legitimize his business dealings in New York City and Italy in 1979, aging Mafia Don Michael Corleone seeks to avow for his sins, while taking his nephew Vincent Mancini under his wing.', 'USA', 'Crime, Drama', 'godfather3.jpg', 'godfather3.mp4', '1990', 7.6, 4),
+(7, 'The Shining', 'A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.', 'USA', 'Drama, Horror', 'shining.jpg', 'shining.mp4', '1980', 8.4, 4),
+(8, 'Raging Bull', 'The life of boxer Jake LaMotta, whose violence and temper that led him to the top in the ring destroyed his life outside of it.', 'USA', 'Biography, Drama, Sport ', 'raging-bull.jpg', 'raging-bull.mp4', '1980', 8.2, 4),
+(9, 'Full Metal Jacket', 'A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.', 'USA', 'Drama, War', 'full-metal-jacket.jpg', 'full-metal-jacket.mp4', '1987', 8.3, 4),
+(10, 'Fear and Loathing in Las Vegas', 'An oddball journalist and his psychopathic lawyer travel to Las Vegas for a series of psychedelic escapades.', 'USA', 'Adventure, Comedy, Drama', 'fear-loathing.jpg', 'fear-loathing.mp4', '1998', 7.6, 4),
+(11, 'Jaws', 'When a killer shark unleashes chaos on a beach community, it\'s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.', 'USA', 'Adventure, Drama, Thriller', 'jaws.jpg', 'jaws.mp4', '1975', 8, 1),
+(12, 'A Clockwork Orange', 'In the future, a sadistic gang leader is imprisoned and volunteers for a conduct-aversion experiment, but it doesn\'t go as planned.', 'USA', 'Crime, Drama, Sci-Fi', 'clockwork-orange.jpg', 'clockwork-orange.mp4', '1971', 8.3, 4),
+(13, 'The Godfather', 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'USA', 'Crime, Drama ', 'godfather.jpg', 'godfather.mp4', '1972', 9.2, 4),
+(14, 'Psycho', 'A Phoenix secretary embezzles forty thousand dollars from her employer\'s client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.', 'USA', 'Horror, Mystery, Thriller', 'psycho.jpg', 'psycho.mp4', '1960', 8.5, 4),
+(15, 'The Good, the Bad and the Ugly', 'A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.', 'USA', 'Western', 'good-bad-ugly.jpg', 'good-bad-ugly.mp4', '1966', 8.8, 4),
+(16, 'Spartacus', 'The slave Spartacus leads a violent revolt against the decadent Roman Republic.', 'Brazil', 'Adventure, Biography, Drama', 'spartacus.jpg', 'spartacus.mp4', '1960', 7.9, 2),
+(17, 'Sunset Blvd.', 'A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return.', 'Australia', 'Drama, Film-Noir', 'sunset-blvd.jpg', 'sunset-blvd.mp4', '1950', 8.4, 0),
+(18, 'Cinderella', 'When Cinderella\'s cruel stepmother prevents her from attending the Royal Ball, she gets some unexpected help from the lovable mice Gus and Jaq, and from her Fairy Godmother.', 'USA', 'Animation, Family, Fantasy', 'cinderella.jpg', 'cinderella.mp4', '1950', 7.3, 0),
+(19, 'Singin\' in the Rain', 'A silent film production company and cast make a difficult transition to sound.', 'USA', 'Comedy, Musical, Romance ', 'singin-rain.jpg', 'singin-rain.mp4', '1952', 8.3, 0);
 
 -- --------------------------------------------------------
 
@@ -160,15 +161,18 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `user_isadmin` tinyint(1) NOT NULL,
   `user_permissions` int(1) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`) VALUES
-(1, 'adddAda', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5),
-(2, 'Kid1', 'Anderson', 'kid1', 'password', 'kid1.jpg', 0, 1);
+(1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5),
+(2, 'Andrew', 'Anderson', 'kid1', 'password', 'kid1.jpg', 0, 1),
+(3, 'Nitya', 'Buch', 'nb', 'password', 'nb.jpg', 1, 5),
+(4, 'Joe', 'Anderson', 'kid2', 'password', 'joe.jpg', 0, 0),
+(5, 'Chris', 'Anderson', 'kid3', 'password', 'chris.jpg', 0, 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -25,9 +25,7 @@ const router = new VueRouter({
         }
       },
       { path: '/start', name:"start", component: StartComponent},
-      { path: '/single', 
-        name:"single", 
-        component: PreviewComponent,
+      { path: '/single', name:"single", component: PreviewComponent,
         beforeEnter: (to,from,next) => {
           if(vm.authenticated == false){
             next("/login");
@@ -37,9 +35,7 @@ const router = new VueRouter({
         }
       },
       { path: '/login', name: "login", component: LoginComponent },
-      { path: '/settings', 
-        name: "settings", 
-        component: SettingsComponent,
+      { path: '/settings', name: "settings", component: SettingsComponent,
         beforeEnter: (to,from,next) => {
           if(vm.authenticated == false){
             next("/login");
@@ -63,9 +59,6 @@ const vm = new Vue({
       //   username: "user",
       //   password: "password"
       // },
-      movies: [],
-      music: [],
-      tv: [],
 
       user: []
 
@@ -103,7 +96,7 @@ const vm = new Vue({
 //     console.log('router guard fired');
 
 //     if(vm.authenticated == false){
-//       next("/login");
+//       next("/start");
 //     } else {
 //       next();
 //     }
