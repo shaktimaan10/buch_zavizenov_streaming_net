@@ -2,7 +2,7 @@
 
     $db_dsn = array(
         'host' => 'localhost',
-        'dbname' => 'testwithvue',
+        'dbname' => 'db_streaming_app',
         'charset' => 'utf8',
     );
     

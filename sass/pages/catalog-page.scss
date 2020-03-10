@@ -187,11 +187,13 @@
     width:100%;
     overflow: hidden;
     position: relative;
+    background-color: white;
 
     img{
         position: absolute;
-        left:0;
-        top:0;
+        left:50%;
+        top:50%;
+        transform: translate(-50%, -50%);
         height:100%;
         min-width: 100%;
     }
@@ -199,6 +201,10 @@
 
 .content-slider-movie-popup{
     display: none;
+
+    h3, p{
+        text-align: center;
+    }
 }
 
 // 
