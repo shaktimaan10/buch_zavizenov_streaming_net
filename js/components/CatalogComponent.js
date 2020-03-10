@@ -9,16 +9,16 @@ export default{
             </div>
             <div class="banner-slider-cover">
                 <div class="banner-slider-content">
-                    <div class="banner-slider-movie">
-                        <img src="images/device-mockup.jpg" alt="">
+                    <div class="banner-slider-movie" v-for="recom in recommendedList">
+                        <img :src="'images/' + recom.movie_poster" alt="">
                         <div class="banner-slider-movie-popup">
                             <div class="slider-movie-popup-content">
                                 <div class="movie-popup-content-row">
-                                    <h2>Movie name 1</h2>
+                                    <h2>{{recom.movie_name}}</h2>
                                     <p>Watch now</p>
                                 </div>
                                 <p>
-                                    Movie description.Movie descriptionMovie descriptionMovie descriptionMovie descriptionMovie descriptionMovie description
+                                    {{recom.movie_desc}}
                                 </p>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ export default{
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
-                <div class="content-slider-cover" v-for="recom in recommendedList">
+                <div class="content-slider-movie" v-for="recom in recommendedList">
                     <div class="content-slider-movie-img">
                         <img :src="'images/' + recom.movie_poster" alt="movie 1">
                     </div>
@@ -208,7 +208,13 @@ export default{
             .catch((err) => {console.error(err)})
         },
         createRecommendations(){
-            
+            const url = './includes/index.php?getRecomContent=1';
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                this.recommendedList = data;
+            })
+            .catch((err) => {console.error(err)})
         }
     },
 

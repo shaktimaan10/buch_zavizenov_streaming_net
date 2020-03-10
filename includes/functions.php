@@ -13,7 +13,7 @@
         }
 
         return $result;
-    }
+    };
 
     function getMusicContent($conn) {
 
@@ -27,7 +27,7 @@
         }
 
         return $result;
-    }
+    };
 
     function getTvContent($conn) {
 
@@ -41,7 +41,21 @@
         }
 
         return $result;
-    }
+    };
+
+    function getRecomContent($conn) {
+
+        $getData = 'SELECT * FROM tbl_movies ORDER BY movie_score DESC LIMIT 10';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
 
     function getUser($conn) {
         $liveUser = $_POST["username"];
@@ -58,4 +72,4 @@
         }
 
         return $result;
-    }
+    };
