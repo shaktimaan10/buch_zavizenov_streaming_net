@@ -63,6 +63,9 @@ const vm = new Vue({
       //   username: "user",
       //   password: "password"
       // },
+      movies: [],
+      music: [],
+      tv: [],
 
       user: []
 
@@ -80,7 +83,7 @@ const vm = new Vue({
       setAuthenticated(status, data) {
         // this means that authentication has passed and we have a valid user
         this.authenticated = status;
-        this.administrator = parseInt(data.isadmin);
+        this.administrator = parseInt(data.user_isadmin);
         this.user = data;
       },
 
