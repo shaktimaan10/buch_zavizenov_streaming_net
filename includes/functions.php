@@ -45,7 +45,7 @@
 
     function getRecomContent($conn) {
 
-        $getData = 'SELECT * FROM tbl_movies ORDER BY movie_score DESC LIMIT 10';
+        $getData = 'SELECT * FROM tbl_movies ORDER BY movie_score DESC LIMIT 2';
         $runQuery = $conn->query($getData);
 
         $result = array();

@@ -1,61 +1,22 @@
 export default{
     template: `
 <div>
+    <!-- Banner Section-->
     <section class="banner-section">
-    <div class="container banner-section-container">
-        <div class="banner-slider">
-            <div class="banner-arrow nabber-arrow-left">
-                <img src="images/left-purple.svg" alt="left-arrow">
-            </div>
-            <div class="banner-slider-cover">
-                <div class="banner-slider-content">
-                    <div class="banner-slider-movie" v-for="recom in recommendedList">
-                        <img :src="'images/' + recom.movie_poster" alt="">
-                        <div class="banner-slider-movie-popup">
-                            <div class="slider-movie-popup-content">
-                                <div class="movie-popup-content-row">
-                                    <h2>{{recom.movie_name}}</h2>
-                                    <p>Watch now</p>
-                                </div>
-                                <p>
-                                    {{recom.movie_desc}}
-                                </p>
-                            </div>
+        <div class="banner-slider-content">
+            <div class="banner-slider-movie" v-for="recom in recommendedList">
+                <video autoplay muted loop id="myVideo">
+                    <source :src="'video/' + recom.movie_video" type="video/mp4">
+                </video>
+                <div class="banner-slider-movie-popup">
+                    <div class="slider-movie-popup-content">
+                        <div class="movie-popup-content-row">
+                            <h2>{{recom.movie_name}}</h2>
+                            <p>Watch now</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="banner-arrow nabber-arrow-right">
-                <img src="images/right-purple.svg" alt="right-arrow">
-            </div>
-        </div>
-        <div class="banner-rounds">
-            <div class="banner-round banner-round-active"></div>
-            <div class="banner-round"></div>
-            <div class="banner-round"></div>
-            <div class="banner-round"></div>
-            <div class="banner-round"></div>
-        </div>
-    </div>
-    </section>
-    <!-- Recommended Section-->
-    <section class="content-slider-section recommended-section" id="recommended-section">
-        <div class="container content-slider-section-header">
-            <h2>Recommended</h2>
-            <a href="#">see more</a>
-        </div>
-        <div class="content-slider-section-content">
-            <div class="container content-slider">
-                <div class="content-slider-movie" v-for="recom in recommendedList">
-                    <div class="content-slider-movie-img">
-                        <img :src="'images/' + recom.movie_poster" alt="movie 1">
-                    </div>
-                    <div class="content-slider-movie-popup">
-                        <h3>{{recom.movie_name}}</h3>
-                        <p>{{recom.movie_genre}}</p>
-                        <a href="preview.html" class="slider-movie-popup-btn">
-                            <img src="images/play.svg" alt="play-btn">
-                        </a>
+                        <p>
+                            {{recom.movie_desc}}
+                        </p>
                     </div>
                 </div>
             </div>

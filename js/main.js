@@ -1,6 +1,7 @@
 // Import all components
 import './components/preview-lighbox.js';
 import './components/mobile-nav.js';
+import './components/banner-slider.js';
 
 import LoginComponent from "./components/LoginComponent.js";
 import CatalogComponent from "./components/CatalogComponent.js";
@@ -13,37 +14,11 @@ const router = new VueRouter({
     // set routes
     routes: [
       { path: '/', redirect: { name: "start" } },
-      { path: '/catalog',
-        name:"catalog",
-        component: CatalogComponent,
-        beforeEnter: (to,from,next) => {
-          if(vm.authenticated == false){
-            next("/login");
-          } else {
-            next();
-          }  
-        }
-      },
+      { path: '/catalog', name:"catalog", component: CatalogComponent, meta: { requiresAuth: true }},
       { path: '/start', name:"start", component: StartComponent},
-      { path: '/single', name:"single", component: PreviewComponent,
-        beforeEnter: (to,from,next) => {
-          if(vm.authenticated == false){
-            next("/login");
-          } else {
-            next();
-          }  
-        }
-      },
+      { path: '/single', name:"single", component: PreviewComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
-      { path: '/settings', name: "settings", component: SettingsComponent,
-        beforeEnter: (to,from,next) => {
-          if(vm.authenticated == false){
-            next("/login");
-          } else {
-            next();
-          }  
-        }
-      }
+      { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
 });
 
@@ -89,15 +64,21 @@ const vm = new Vue({
       }
     },
 
-    router: router
+    router
 });
 
-// router.beforeEach((to,from,next) => {
-//     console.log('router guard fired');
+router.beforeEach((to,from,next) => {
+    let userStatus = vm.authenticated;
 
-//     if(vm.authenticated == false){
-//       next("/start");
-//     } else {
-//       next();
-//     }
-// });
+    if(to.matched.some(record => record.meta.requiresAuth)){
+      if(userStatus){
+        console.log("redirecting user to next page");
+        next();
+      } else {
+        console.log("redirecting user to login");
+        next({name: 'login'});
+      }
+    } else {
+      next();
+    }
+});
