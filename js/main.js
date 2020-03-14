@@ -1,11 +1,9 @@
 // Import all components
-import './components/preview-lighbox.js';
-import './components/mobile-nav.js';
-import './components/banner-slider.js';
-
 import LoginComponent from "./components/LoginComponent.js";
 import CatalogComponent from "./components/CatalogComponent.js";
-import PreviewComponent from "./components/PreviewComponent.js";
+import MoviePreviewComponent from "./components/MoviePreviewComponent.js";
+import MusicPreviewComponent from "./components/MusicPreviewComponent.js";
+import TvPreviewComponent from "./components/TvPreviewComponent.js";
 import StartComponent from "./components/StartComponent.js";
 import SettingsComponent from "./components/SettingsComponent.js";
 
@@ -14,9 +12,11 @@ const router = new VueRouter({
     // set routes
     routes: [
       { path: '/', redirect: { name: "start" } },
-      { path: '/catalog', name:"catalog", component: CatalogComponent, meta: { requiresAuth: true }},
+      { path: '/catalog/:age', name:"catalog", component: CatalogComponent, meta: { requiresAuth: true }},
       { path: '/start', name:"start", component: StartComponent},
-      { path: '/single', name:"single", component: PreviewComponent, meta: { requiresAuth: true }},
+      { path: '/singleMovie/:cId', name:"singleMovie", component: MoviePreviewComponent, meta: { requiresAuth: true }},
+      { path: '/singleMusic/:cId', name:"singleMusic", component: MusicPreviewComponent, meta: { requiresAuth: true }},
+      { path: '/singleTv/:cId', name:"singleTv", component: TvPreviewComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
@@ -62,6 +62,8 @@ const vm = new Vue({
         this.$router.push({ path: "/start" });
         this.authenticated = false;
       }
+
+      
     },
 
     router

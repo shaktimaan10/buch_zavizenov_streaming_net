@@ -12,29 +12,21 @@
     <title>Roku Flashback</title>
 </head>
 <body>
-    <div class="mobile-nav">
-        <div class="mobile-nav-cross">
-            <img src="images/cross-purple.svg" alt="cross-btn">
-        </div>
-        <div class="mobile-nav-list">
-            <a href="catalog.html">Home</a>
-            <a href="catalog.html">Movies</a>
-            <a href="catalog.html">TV</a>
-            <a href="catalog.html">Msic</a>
-        </div>
-    </div>
-    <div class="preview-section-lightbox">
-        <div class="preview-section-cross">
-            <img src="images/cross.svg" alt="close-icon">
-        </div>
-        <video class="preview-section-lightbox-video" controls>
-            <source src="video/dunkirk.mp4" type="video/mp4">
-        </video>
-    </div> 
     <main id="app">
+        <div v-if="authenticated" class="mobile-nav">
+            <div class="mobile-nav-cross">
+                <img src="images/cross-purple.svg" alt="cross-btn">
+            </div>
+            <div class="mobile-nav-list">
+                <a href="catalog.html">Home</a>
+                <a href="catalog.html">Movies</a>
+                <a href="catalog.html">TV</a>
+                <a href="catalog.html">Msic</a>
+            </div>
+        </div>
         <header>
             <div class="container header-container">
-                <router-link to="/catalog" class="header-logo">
+                <router-link :to="{ name: 'catalog', params: {age: user['user_permissions'] }}" class="header-logo">
                     <img src="images/logo.svg" alt="Roku logo">
                 </router-link>
                 <div class="header-menu">
@@ -44,11 +36,11 @@
                         <a href="#" class="header-nav-link">Music</a>
                     </nav>
                     <router-link to="/settings" class="header-user" v-if="authenticated">
-                        <img src="images/dog.jpg" alt="user-icon">
+                        <img :src="'images/' + user.user_avatar" alt="user-icon">
                     </router-link>
                 </div>
                 <router-link v-if="!authenticated" to="/login" href="login.html" class="header-cta">Log In</router-link>
-                <div class="header-burger">
+                <div v-if="authenticated" class="header-burger">
                     <img src="images/burger.svg" alt="burger icon">
                 </div>
             </div>

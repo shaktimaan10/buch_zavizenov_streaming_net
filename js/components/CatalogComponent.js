@@ -12,7 +12,7 @@ export default{
                     <div class="slider-movie-popup-content">
                         <div class="movie-popup-content-row">
                             <h2>{{recom.movie_name}}</h2>
-                            <p>Watch now</p>
+                            <p @click="goToSingleMovie(recom.movie_id)">Watch now</p>
                         </div>
                         <p>
                             {{recom.movie_desc}}
@@ -42,7 +42,7 @@ export default{
                             <div class="content-slider-movie-popup">
                                 <h3>{{movie.movie_name}}</h3>
                                 <p>{{movie.movie_genre}}</p>
-                                <a href="preview.html" class="slider-movie-popup-btn">
+                                <a @click="goToSingleMovie(movie.movie_id)" class="slider-movie-popup-btn">
                                     <img src="images/play.svg" alt="play-btn">
                                 </a>
                             </div>
@@ -75,7 +75,7 @@ export default{
                             <div class="content-slider-movie-popup">
                                 <h3>{{music.music_name}}</h3>
                                 <p>{{music.music_genre}}</p>
-                                <a href="preview.html" class="slider-movie-popup-btn">
+                                <a @click="goToSingleMusic(music.music_id)" class="slider-movie-popup-btn">
                                     <img src="images/play.svg" alt="play-btn">
                                 </a>
                             </div>
@@ -108,7 +108,7 @@ export default{
                             <div class="content-slider-movie-popup">
                                 <h3>{{tv.tv_name}}</h3>
                                 <p>{{tv.tv_genre}}</p>
-                                <a href="preview.html" class="slider-movie-popup-btn">
+                                <a @click="goToSingleTv(tv.tv_id)" class="slider-movie-popup-btn">
                                     <img src="images/play.svg" alt="play-btn">
                                 </a>
                             </div>
@@ -128,7 +128,9 @@ export default{
             moviesList: [],
             musicList: [],
             tvList: [],
-            recommendedList: []
+            recommendedList: [],
+            bannerIndex: 0,
+            restriction: this.$route.params.age
         }
     },
     
@@ -138,11 +140,12 @@ export default{
         this.fetchAllMusic();
         this.fetchAllTv();
         this.createRecommendations();
+        setInterval(()=>this.moveSlider(this.bannerIndex),6000)
     },
     
     methods: {
         fetchAllMovies() {
-            const url = './includes/index.php?getMoviesContent=1';
+            const url = `./includes/index.php?getMoviesContent=1&restriction=${this.restriction}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -151,7 +154,7 @@ export default{
             .catch((err) => {console.error(err)})
         },
         fetchAllMusic() {
-            const url = './includes/index.php?getMusicContent=1';
+            const url = `./includes/index.php?getMusicContent=1&restriction=${this.restriction}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -160,7 +163,7 @@ export default{
             .catch((err) => {console.error(err)})
         },
         fetchAllTv() {
-            const url = './includes/index.php?getTvContent=1';
+            const url = `./includes/index.php?getTvContent=1&restriction=${this.restriction}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -169,13 +172,40 @@ export default{
             .catch((err) => {console.error(err)})
         },
         createRecommendations(){
-            const url = './includes/index.php?getRecomContent=1';
+            const url = `./includes/index.php?getRecomContent=1&restriction=${this.restriction}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
                 this.recommendedList = data;
             })
             .catch((err) => {console.error(err)})
+        },
+        moveSlider(bannerIndex){
+            let bannerSection = document.querySelector('.banner-section');
+            let bannerContent = document.querySelector('.banner-slider-content');
+            
+            if(bannerSection){
+                let containerWidth = window.innerWidth;
+                let moviesNumber = bannerContent.childNodes.length - 1;
+                
+                if(bannerIndex <= moviesNumber){
+                    let newLeft = containerWidth * bannerIndex;
+                    bannerContent.style.left = `-${newLeft}px`;
+                    this.bannerIndex += 1
+                } else {
+                    bannerIndex = 0;
+                    bannerContent.style.left = `0px`;
+                } 
+            }
+        },
+        goToSingleMovie(contentId){
+            this.$router.push({ name: 'singleMovie', params: {cId: contentId}})
+        },
+        goToSingleMusic(contentId){
+            this.$router.push({ name: 'singleMusic', params: {cId: contentId}})
+        },
+        goToSingleTv(contentId){
+            this.$router.push({ name: 'singleTv', params: {cId: contentId}})
         }
     },
 

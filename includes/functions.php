@@ -1,9 +1,9 @@
 <?php
     require('connect.php');
 
-    function getMoviesContent($conn) {
+    function getMoviesContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_movies';
+        $getData = 'SELECT * FROM tbl_movies WHERE movie_pg <= "' . $age . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -15,9 +15,9 @@
         return $result;
     };
 
-    function getMusicContent($conn) {
+    function getMusicContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_music';
+        $getData = 'SELECT * FROM tbl_music WHERE music_pg <= "' . $age . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -29,9 +29,9 @@
         return $result;
     };
 
-    function getTvContent($conn) {
+    function getTvContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_tv';
+        $getData = 'SELECT * FROM tbl_tv WHERE tv_pg <= "' . $age . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -43,9 +43,48 @@
         return $result;
     };
 
-    function getRecomContent($conn) {
+    function getRecomContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_movies ORDER BY movie_score DESC LIMIT 2';
+        $getData = 'SELECT * FROM tbl_movies WHERE movie_pg <= "' . $age . '" ORDER BY movie_score DESC LIMIT 5';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
+    function getSingleMovie($conn, $con_id){
+        $getData = 'SELECT * FROM tbl_movies WHERE movie_id = "' . $con_id . '"';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
+    function getSingleMusic($conn, $con_id){
+        $getData = 'SELECT * FROM tbl_music WHERE music_id = "' . $con_id . '"';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
+    function getSingleTv($conn, $con_id){
+        $getData = 'SELECT * FROM tbl_tv WHERE tv_id = "' . $con_id . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
