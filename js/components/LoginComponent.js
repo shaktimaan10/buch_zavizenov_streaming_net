@@ -58,7 +58,7 @@ export default {
                         // we got a user back, let's set authneticate event
                         this.$emit("authenticated", true, data[0]);
                         // reroute to user component so we can see all user
-                        this.$router.push({ path: "/catalog" });
+                        this.$router.push({ name: 'catalog', params: {age: data[0]['user_permissions']}});
                     }
                 })
                 .catch((error) => console.log(error));

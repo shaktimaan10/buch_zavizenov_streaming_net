@@ -4,53 +4,37 @@
 .banner-section{
     background-color: $purple;
     height:320px;
-}
-
-.banner-section-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.banner-slider{
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.banner-arrow{
-    display: none;
-}
-
-.banner-slider-cover{
-    width:100%;
-    height:200px;
     overflow: hidden;
-    position:relative;
+    height: calc(100vh - 50px);
+    position: relative; 
+    width:100vw;
 }
 
 .banner-slider-content{
     position: absolute;
-    width:1600px;
-    height:200px;
+    height:100%;
     left:0;
     top:0;
     display: flex;
     flex-direction: row;
     align-items: center;
     overflow:hidden;
+    transition: 0.7s all ease-in-out;
 }
 
 .banner-slider-movie{
-    width:320px;
+    width:100vw;
     height:100%;
     overflow: hidden;
     position: relative;
 
-    img{
-        width:100%;
-        min-height:100%;
+    video{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        height:100%;
+        min-width: 100%;
     }
 }
 
@@ -58,20 +42,21 @@
     position: absolute;
     top:0;
     left:0;
-    background-color: rgba($color: #000000, $alpha: 0.6);
+    background-color: rgba($color: #000000, $alpha: 0.2);
     width:100%;
     height:100%;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-end;
 }
 
 .slider-movie-popup-content{
+    width:320px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left:20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .movie-popup-content-row{
@@ -153,6 +138,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
 
     img{
         width:100%;
@@ -180,6 +166,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .content-slider-movie-img{
@@ -200,10 +187,48 @@
 }
 
 .content-slider-movie-popup{
-    display: none;
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity:1;
+    transition: 0.7s all ease-in-out;
 
-    h3, p{
+    p{
+        margin-top:8px;
+        font-size:12px;
         text-align: center;
+    }
+
+    h3{
+        text-align: center;
+    }
+}
+
+.slider-movie-popup-btn{
+    margin-top:25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-family: "Raleway",sans-serif;
+    font-size:14px;
+    width:40px;
+    height:40px;
+    border: 1px solid white;
+    border-radius: 50%;
+    transition: 0.7s all ease-in-out;
+
+    img{
+        width:30%;
+        margin-left:4px;
     }
 }
 
@@ -212,47 +237,24 @@
 // 
 @media screen and (min-width:720px){
     .banner-section{
-        height:450px;
-    }
-
-    .banner-section-container{
-        height:400px;
-    }
-    
-    .banner-arrow{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width:10%;
-        height:120px;
-        background-color: white;
-
-        img{
-            width:50%;
-        }
-    }
-
-    .banner-slider-cover{
-        width:80%;
-        height: 300px;
+        height: calc(100vh - 60px);
     }
 
     .banner-slider-content{
-        width:2880px;
-        height:300px;
+        height:100%;
     }
 
     .banner-slider-movie{
-        width:576px;
+        width:100vw;
     }
 
     .slider-movie-popup-content{
-        margin-bottom: 30px;
-        margin-left: 30px;
-    }
+        width:720px;
+        margin-bottom: 50px;
 
-    .banner-round{
-        margin-top:20px;
+        p{
+            width:400px;
+        }
     }
 
     // Content section
@@ -275,41 +277,35 @@
 @media screen and (min-width:1200px){
     .banner-section{
         height: calc(100vh - 60px);
-    }
-
-    .banner-arrow{
-        width:5%;
-        cursor: pointer;
-    }
-
-    .banner-slider-cover{
-        width:1080px;
-        height:500px;
+        width: 100%;
+        overflow: hidden;
     }
 
     .banner-slider-content{
-        height:500px;
-        width:5400px;
+        height:100%;
     }
 
     .banner-slider-movie{
-        width:1080px;
-        height:500px;
-    }
+        width:100vw;
+        height:100%;
 
-    .banner-slider-movie-popup{
-        opacity:0;
-        transition: 0.7s all ease-in-out;
-    }
-
-    .banner-slider-movie:hover{
-        .banner-slider-movie-popup{
-            opacity:1;
+        video{
+            height:135%;
         }
     }
 
+    .banner-slider-movie-popup{
+        transition: 0.7s all ease-in-out;
+    }
+
     .slider-movie-popup-content{
-        width: 500px;
+        width: 1200px;
+        margin-bottom: 50px;
+
+        p{
+            margin-top:10px;
+            width:600px;
+        }
     }
 
     .movie-popup-content-row{
@@ -391,5 +387,13 @@
 
     .slider-movie-popup-btn:hover{
         background-color: $purple;
+    }
+}
+
+@media screen and (min-width:1670px){
+    .banner-slider-movie{
+        video{
+            height:130%;
+        }
     }
 }

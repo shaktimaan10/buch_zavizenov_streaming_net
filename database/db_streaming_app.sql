@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 10, 2020 at 09:57 PM
+-- Generation Time: Mar 14, 2020 at 01:00 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tbl_movies` (
   `movie_score` float NOT NULL,
   `movie_pg` int(1) NOT NULL,
   PRIMARY KEY (`movie_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_movies`
@@ -66,7 +66,11 @@ INSERT INTO `tbl_movies` (`movie_id`, `movie_name`, `movie_desc`, `movie_country
 (16, 'Spartacus', 'The slave Spartacus leads a violent revolt against the decadent Roman Republic.', 'Brazil', 'Adventure, Biography, Drama', 'spartacus.jpg', 'spartacus.mp4', '1960', 7.9, 2),
 (17, 'Sunset Blvd.', 'A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return.', 'Australia', 'Drama, Film-Noir', 'sunset-blvd.jpg', 'sunset-blvd.mp4', '1950', 8.4, 0),
 (18, 'Cinderella', 'When Cinderella\'s cruel stepmother prevents her from attending the Royal Ball, she gets some unexpected help from the lovable mice Gus and Jaq, and from her Fairy Godmother.', 'USA', 'Animation, Family, Fantasy', 'cinderella.jpg', 'cinderella.mp4', '1950', 7.3, 0),
-(19, 'Singin\' in the Rain', 'A silent film production company and cast make a difficult transition to sound.', 'USA', 'Comedy, Musical, Romance ', 'singin-rain.jpg', 'singin-rain.mp4', '1952', 8.3, 0);
+(19, 'Singin\' in the Rain', 'A silent film production company and cast make a difficult transition to sound.', 'USA', 'Comedy, Musical, Romance ', 'singin-rain.jpg', 'singin-rain.mp4', '1952', 8.3, 0),
+(20, 'Frozen II', 'Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa\'s powers in order to save their kingdom.', 'USA', 'Animation, Adventure, Comedy', 'frozen2.jpg', 'frozen2.mp4', '2019', 7, 1),
+(21, 'Toy Story', 'A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy\'s room.', 'USA', 'Animation, Adventure, Comedy', 'toy-story.jpg', 'toy-story.mp4', '1995', 8.3, 0),
+(22, 'Pokémon Detective Pikachu', 'In a world where people collect Pokémon to do battle, a boy comes across an intelligent talking Pikachu who seeks to be a detective.', 'USA', 'Action, Adventure, Comedy', 'pikachu-detective.jpg', 'pikachu-detective.mp4', '2019', 6.6, 1),
+(23, 'The Lion King', 'After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.', 'USA', 'Animation, Adventure, Drama', 'lion-king.jpg', 'lion-king.mp4', '2019', 6.9, 1);
 
 -- --------------------------------------------------------
 
@@ -169,10 +173,10 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`) VALUES
 (1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5),
-(2, 'Andrew', 'Anderson', 'kid1', 'password', 'kid1.jpg', 0, 1),
-(3, 'Nitya', 'Buch', 'nb', 'password', 'nb.jpg', 1, 5),
-(4, 'Joe', 'Anderson', 'kid2', 'password', 'joe.jpg', 0, 0),
-(5, 'Chris', 'Anderson', 'kid3', 'password', 'chris.jpg', 0, 3);
+(2, 'Andrew', 'Anderson', 'kid1', 'password', 'default.png', 0, 1),
+(3, 'Nitya', 'Buch', 'nb', 'password', 'default.png', 1, 5),
+(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 0),
+(5, 'Chris', 'Anderson', 'kid3', 'password', 'default.png', 0, 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,27 +2,45 @@
     require('functions.php');
 
     if(isset($_GET["getMoviesContent"])) {
-        $movies = getMoviesContent($pdo);
+        $movies = getMoviesContent($pdo, $_GET["restriction"]);
      
         echo json_encode($movies);
     } 
 
     if(isset($_GET["getMusicContent"])) {
-        $music = getMusicContent($pdo);
+        $music = getMusicContent($pdo, $_GET["restriction"]);
      
         echo json_encode($music);
     } 
 
     if(isset($_GET["getTvContent"])) {
-        $tv = getTvContent($pdo);
+        $tv = getTvContent($pdo, $_GET["restriction"]);
      
         echo json_encode($tv);
     } 
 
     if(isset($_GET["getRecomContent"])) {
-        $recom = getRecomContent($pdo);
+        $recom = getRecomContent($pdo, $_GET["restriction"]);
      
         echo json_encode($recom);
+    } 
+
+    if(isset($_GET["getSingleMovie"])) {
+        $single = getSingleMovie($pdo, $_GET['getSingleMovie']);
+     
+        echo json_encode($single);
+    }
+    
+    if(isset($_GET["getSingleMusic"])) {
+        $single = getSingleMusic($pdo, $_GET['getSingleMusic']);
+     
+        echo json_encode($single);
+    } 
+
+    if(isset($_GET["getSingleTv"])) {
+        $single = getSingleTv($pdo, $_GET['getSingleTv']);
+     
+        echo json_encode($single);
     } 
 
     if (isset($_GET['user'])) {
