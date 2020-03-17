@@ -22,9 +22,9 @@ export default {
                         <h1>{{singleContent[0].music_name}}</h1>
                         <div class="preview-content-line">
                             <h3>{{singleContent[0].music_genre}}</h3>
-                            <h3>{{singleContent[0].movie_author}}</h3>
+                            <h3>{{singleContent[0].music_date}}</h3>
                         </div>
-                        <p>{{singleContent[0].music_genre}}</p>
+                        <p>{{singleContent[0].music_author}}</p>
                     </div> 
                 </div>
         </section>

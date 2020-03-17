@@ -43,6 +43,12 @@
         echo json_encode($single);
     } 
 
+    if(isset($_GET["getSingleType"])) {
+        $singleType = getSingleType($pdo, $_GET['getSingleType']);
+     
+        echo json_encode($singleType);
+    } 
+
     if (isset($_GET['user'])) {
         $user = getUser($pdo);
 

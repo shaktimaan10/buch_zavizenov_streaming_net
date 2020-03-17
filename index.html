@@ -31,9 +31,9 @@
                 </router-link>
                 <div class="header-menu">
                     <nav class="header-nav" v-if="authenticated">
-                        <a href="#" class="header-nav-link">Movies</a>
-                        <a href="#" class="header-nav-link">Tv</a>
-                        <a href="#" class="header-nav-link">Music</a>
+                        <router-link :to="{ name: 'movieType', params: {type: 'movies' }}" class="header-nav-link">Movies</router-link>
+                        <router-link :to="{ name: 'tvType', params: {type: 'tv' }}" class="header-nav-link">Tv</router-link>
+                        <router-link :to="{ name: 'musicType', params: {type: 'music' }}" class="header-nav-link">Music</router-link>
                     </nav>
                     <router-link to="/settings" class="header-user" v-if="authenticated">
                         <img :src="'images/' + user.user_avatar" alt="user-icon">
@@ -49,9 +49,9 @@
     </main>
     <footer>
         <div class="container footer-container">
-            <a href="login.html" class="footer-logo">
+            <router-link :to="{ name: 'catalog', params: {age: user['user_permissions'] }}" class="footer-logo">
                 <img src="images/logo-white.svg" alt="flashback logo">
-            </a>
+            </router-link>
             <p>Roku Flashback © 2020</p>
         </div>
     </footer>
