@@ -4,8 +4,59 @@
 .single-type-section{
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: $purple;
+    min-height: calc(100vh - 100px);
+}
+
+.single-type-filters{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top:50px;
+    margin-bottom: 10px;
+}
+
+.single-type-filter{
+    margin-right:22px;
+    margin-bottom: 20px;
+    cursor:pointer;
+    color: white;
+    width:90px;
+    height:30px;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.7s all ease-in-out;
+    font-family: 'Montserrat';
+    font-size:14px;
+}
+
+.single-type-filter:nth-child(3n){
+    margin-right:0px;
+}
+
+.single-type-filter:nth-last-child(1){
+    margin-bottom: 0px;
+}
+
+.single-type-filter:nth-last-child(2){
+    margin-bottom: 0px;
+}
+
+.single-type-filter:hover{
+    color:$purple;
+    background-color: white;
+}
+
+.single-type-filter-active{
+    color:$purple;
+    background-color: white;
 }
 
 .single-type-container{
@@ -22,9 +73,71 @@
 }
 
 @media screen and (min-width:720px){
+
+    .single-type-section{
+        min-height: calc(100vh - 110px);
+    }
+
     .single-type-container{
         .content-slider-movie{
             width:120px;
         }
+    }
+
+    .single-type-filter{
+        margin-right: 33px;
+        margin-bottom: 25px;
+    }
+
+    .single-type-filter:nth-child(n+7){
+        margin-bottom: 0px;
+    }
+
+    .single-type-filter:nth-child(3n){
+        margin-right:33px;
+    }
+
+    .single-type-filter:nth-child(6n){
+        margin-right:0px;
+    }
+
+    .single-type-filter:nth-last-child(1){
+        margin-bottom: 0px;
+    }
+    
+    .single-type-filter:nth-last-child(2){
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (min-width:1200px){
+    .single-type-filters{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:50px;
+        margin-bottom: 10px;
+    }
+    
+    .single-type-filter{
+        cursor:pointer;
+        color: white;
+        width:90px;
+        height:30px;
+        border: 1px solid white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.7s all ease-in-out;
+        font-family: 'Montserrat';
+        font-size:14px;
+        margin:0 !important;
+    }
+
+    .single-type-filter-active{
+        color: $purple;
     }
 }

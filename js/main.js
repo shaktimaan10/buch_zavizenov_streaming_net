@@ -20,9 +20,9 @@ const router = new VueRouter({
       { path: '/singleMovie/:cId', name:"singleMovie", component: MoviePreviewComponent, meta: { requiresAuth: true }},
       { path: '/singleMusic/:cId', name:"singleMusic", component: MusicPreviewComponent, meta: { requiresAuth: true }},
       { path: '/singleTv/:cId', name:"singleTv", component: TvPreviewComponent, meta: { requiresAuth: true }},
-      { path: '/movieType/:type', name:"movieType", component: MovieTypeComponent, meta: { requiresAuth: true }},
-      { path: '/musicType/:type', name:"musicType", component: MusicTypeComponent, meta: { requiresAuth: true }},
-      { path: '/tvType/:type', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
+      { path: '/movieType/:type/:age', name:"movieType", component: MovieTypeComponent, meta: { requiresAuth: true }},
+      { path: '/musicType/:type/:age', name:"musicType", component: MusicTypeComponent, meta: { requiresAuth: true }},
+      { path: '/tvType/:type/:age', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
