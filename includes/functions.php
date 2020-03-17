@@ -3,7 +3,7 @@
 
     function getMoviesContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_movies WHERE movie_pg <= "' . $age . '"';
+        $getData = 'SELECT * FROM tbl_movie WHERE movie_pg <= "' . $age . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -45,7 +45,7 @@
 
     function getRecomContent($conn, $age) {
 
-        $getData = 'SELECT * FROM tbl_movies WHERE movie_pg <= "' . $age . '" ORDER BY movie_score DESC LIMIT 5';
+        $getData = 'SELECT * FROM tbl_movie WHERE movie_pg <= "' . $age . '" ORDER BY movie_score DESC LIMIT 5';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -58,7 +58,7 @@
     };
 
     function getSingleMovie($conn, $con_id){
-        $getData = 'SELECT * FROM tbl_movies WHERE movie_id = "' . $con_id . '"';
+        $getData = 'SELECT * FROM tbl_movie WHERE movie_id = "' . $con_id . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -96,8 +96,8 @@
         return $result;
     };
 
-    function getSingleType($conn, $con_id){
-        $getData = 'SELECT * FROM tbl_' . $con_id;
+    function getSingleType($conn, $con_id, $con_age){
+        $getData = 'SELECT * FROM tbl_' . $con_id . ' WHERE ' . $con_id . '_pg <= ' . $con_age;
         $runQuery = $conn->query($getData);
 
         $result = array();

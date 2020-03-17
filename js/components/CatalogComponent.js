@@ -26,12 +26,14 @@ export default{
     <section class="content-slider-section recommended-section" id="movies-section">
         <div class="container content-slider-section-header">
             <h2>Movies</h2>
-            <router-link :to="{ name: 'movieType', params: {type: 'movies' }}">see all</router-link>
+            <router-link :to="{ name: 'movieType', params: {type: 'movie' }}">see all</router-link>
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
-                <div class="content-slider-arrow content-slider-arrow-left">
-                    <img src="images/left-white.svg" alt="left-arrow">
+                <div @click="movieSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>           
                 </div>
                 <div class="content-slider-cover">
                     <div class="content-slider-content">
@@ -49,8 +51,10 @@ export default{
                         </div>
                     </div>
                 </div>
-                <div class="content-slider-arrow content-slider-arrow-right">
-                    <img src="images/right-white.svg" alt="right-arrow">
+                <div @click="movieSliderRight()" class="content-slider-arrow content-slider-arrow-right">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50.4264 103.853L114.853 61.4264L50.4264 19" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> 
                 </div>
             </div>
         </div>
@@ -63,8 +67,10 @@ export default{
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
-                <div class="content-slider-arrow content-slider-arrow-left">
-                    <img src="images/left-white.svg" alt="left-arrow">
+                <div @click="musicSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
                 </div>
                 <div class="content-slider-cover">
                     <div class="content-slider-content">
@@ -82,8 +88,10 @@ export default{
                         </div>
                     </div>
                 </div>
-                <div class="content-slider-arrow content-slider-arrow-right">
-                    <img src="images/right-white.svg" alt="right-arrow">
+                <div @click="musicSliderRight()" class="content-slider-arrow content-slider-arrow-right">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50.4264 103.853L114.853 61.4264L50.4264 19" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> 
                 </div>
             </div>
         </div>
@@ -96,8 +104,10 @@ export default{
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
-                <div class="content-slider-arrow content-slider-arrow-left">
-                    <img src="images/left-white.svg" alt="left-arrow">
+                <div @click="tvSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>  
                 </div>
                 <div class="content-slider-cover">
                     <div class="content-slider-content">
@@ -115,8 +125,10 @@ export default{
                         </div>
                     </div>
                 </div>
-                <div class="content-slider-arrow content-slider-arrow-right">
-                    <img src="images/right-white.svg" alt="right-arrow">
+                <div @click="tvSliderRight()" class="content-slider-arrow content-slider-arrow-right">
+                    <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50.4264 103.853L114.853 61.4264L50.4264 19" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> 
                 </div>
             </div>
         </div>
@@ -130,6 +142,9 @@ export default{
             tvList: [],
             recommendedList: [],
             bannerIndex: 0,
+            movieIndex: 0,
+            musicIndex: 0,
+            tvIndex: 0,
             restriction: this.$route.params.age
         }
     },
@@ -206,6 +221,90 @@ export default{
         },
         goToSingleTv(contentId){
             this.$router.push({ name: 'singleTv', params: {cId: contentId}})
+        },
+        movieSliderRight(){
+            let movieSlider = document.querySelector('#movies-section .content-slider-content');
+            let singleMovie = movieSlider.querySelector('.content-slider-movie');
+            let moviesCount = movieSlider.childNodes.length;
+            let singleMovieWidth = singleMovie.offsetWidth;
+
+            if(this.movieIndex < moviesCount - 1){
+                this.movieIndex ++;
+                movieSlider.style.left = `-${singleMovieWidth * this.movieIndex}px`;
+            } else {
+                this.movieIndex = 0;
+                movieSlider.style.left = `0px`;
+            }
+        },
+        movieSliderLeft(){
+            let movieSlider = document.querySelector('#movies-section .content-slider-content');
+            let singleMovie = movieSlider.querySelector('.content-slider-movie');
+            let moviesCount = movieSlider.childNodes.length;
+            let singleMovieWidth = singleMovie.offsetWidth;
+
+            if(this.movieIndex > 0){
+                this.movieIndex --;
+                movieSlider.style.left = `-${singleMovieWidth * this.movieIndex}px`;
+            } else {
+                this.movieIndex = moviesCount - 1;
+                movieSlider.style.left = `-${singleMovieWidth * (moviesCount - 1)}px`;
+            }
+        },
+        musicSliderRight(){
+            let musicSlider = document.querySelector('#music-section .content-slider-content');
+            let singleMusic = musicSlider.querySelector('.content-slider-movie');
+            let musicCount = musicSlider.childNodes.length;
+            let singleMusicWidth = singleMusic.offsetWidth;
+
+            if(this.musicIndex < musicCount - 1){
+                this.musicIndex ++;
+                musicSlider.style.left = `-${singleMusicWidth * this.musicIndex}px`;
+            } else {
+                this.musicIndex = 0;
+                musicSlider.style.left = `0px`;
+            }
+        },
+        musicSliderLeft(){
+            let musicSlider = document.querySelector('#music-section .content-slider-content');
+            let singleMusic = musicSlider.querySelector('.content-slider-movie');
+            let musicCount = musicSlider.childNodes.length;
+            let singleMusicWidth = singleMusic.offsetWidth;
+
+            if(this.musicIndex > 0){
+                this.musicIndex --;
+                musicSlider.style.left = `-${singleMusicWidth * this.musicIndex}px`;
+            } else {
+                this.musicIndex = musicCount - 1;
+                musicSlider.style.left = `-${singleMusicWidth * (musicCount - 1)}px`;
+            }
+        },
+        tvSliderRight(){
+            let tvSlider = document.querySelector('#tv-section .content-slider-content');
+            let singleTv = tvSlider.querySelector('.content-slider-movie');
+            let tvCount = tvSlider.childNodes.length;
+            let singleTvWidth = singleTv.offsetWidth;
+
+            if(this.tvIndex < tvCount - 1){
+                this.tvIndex ++;
+                tvSlider.style.left = `-${singleTvWidth * this.tvIndex}px`;
+            } else {
+                this.tvIndex = 0;
+                tvSlider.style.left = `0px`;
+            }
+        },
+        tvSliderLeft(){
+            let tvSlider = document.querySelector('#tv-section .content-slider-content');
+            let singleTv = tvSlider.querySelector('.content-slider-movie');
+            let tvCount = tvSlider.childNodes.length;
+            let singleTvWidth = singleTv.offsetWidth;
+
+            if(this.tvIndex > 0){
+                this.tvIndex --;
+                tvSlider.style.left = `-${singleTvWidth * this.tvIndex}px`;
+            } else {
+                this.tvIndex = tvCount - 1;
+                tvSlider.style.left = `-${singleTvWidth * (tvCount - 1)}px`;
+            }
         }
     },
 

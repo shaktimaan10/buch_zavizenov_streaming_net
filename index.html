@@ -31,9 +31,9 @@
                 </router-link>
                 <div class="header-menu">
                     <nav class="header-nav" v-if="authenticated">
-                        <router-link :to="{ name: 'movieType', params: {type: 'movies' }}" class="header-nav-link">Movies</router-link>
-                        <router-link :to="{ name: 'tvType', params: {type: 'tv' }}" class="header-nav-link">Tv</router-link>
-                        <router-link :to="{ name: 'musicType', params: {type: 'music' }}" class="header-nav-link">Music</router-link>
+                        <router-link :to="{ name: 'movieType', params: {type: 'movie', age: user['user_permissions'] }}" class="header-nav-link">Movies</router-link>
+                        <router-link :to="{ name: 'tvType', params: {type: 'tv', age: user['user_permissions']}}" class="header-nav-link">Tv</router-link>
+                        <router-link :to="{ name: 'musicType', params: {type: 'music', age: user['user_permissions']}}" class="header-nav-link">Music</router-link>
                     </nav>
                     <router-link to="/settings" class="header-user" v-if="authenticated">
                         <img :src="'images/' + user.user_avatar" alt="user-icon">

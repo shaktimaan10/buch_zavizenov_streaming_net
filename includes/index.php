@@ -44,7 +44,7 @@
     } 
 
     if(isset($_GET["getSingleType"])) {
-        $singleType = getSingleType($pdo, $_GET['getSingleType']);
+        $singleType = getSingleType($pdo, $_GET['getSingleType'], $_GET['allowedAge']);
      
         echo json_encode($singleType);
     } 

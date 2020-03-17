@@ -139,9 +139,33 @@
     align-items: center;
     justify-content: center;
     cursor:pointer;
+    transition: 0.7s all ease-in-out;
 
     img{
         width:100%;
+    }
+
+    svg{
+        transition: 0.2s all ease-in-out;
+        width:100%;
+        stroke: white;
+
+        path{
+            transition: 0.2s all ease-in-out;
+            stroke: white;
+        }
+    }
+}
+
+.content-slider-arrow:hover{
+    background-color: white;
+
+    svg{
+        stroke: $purple;
+
+        path{
+            stroke: $purple;
+        }
     }
 }
 
@@ -159,6 +183,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    transition: 0.7s all ease-in-out;
 }
 
 .content-slider-movie{
