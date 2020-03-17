@@ -26,7 +26,7 @@ export default{
     <section class="content-slider-section recommended-section" id="movies-section">
         <div class="container content-slider-section-header">
             <h2>Movies</h2>
-            <a href="#">see more</a>
+            <router-link :to="{ name: 'movieType', params: {type: 'movies' }}">see all</router-link>
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
@@ -59,7 +59,7 @@ export default{
     <section class="content-slider-section recommended-section" id="music-section">
         <div class="container content-slider-section-header">
             <h2>Music</h2>
-            <a href="#">see more</a>
+            <router-link :to="{ name: 'musicType', params: {type: 'music' }}">see all</router-link>
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">
@@ -92,7 +92,7 @@ export default{
     <section class="content-slider-section recommended-section" id="tv-section">
         <div class="container content-slider-section-header">
             <h2>Tv</h2>
-            <a href="#">see more</a>
+            <router-link :to="{ name: 'tvType', params: {type: 'tv' }}">see all</router-link>
         </div>
         <div class="content-slider-section-content">
             <div class="container content-slider">

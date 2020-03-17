@@ -96,6 +96,19 @@
         return $result;
     };
 
+    function getSingleType($conn, $con_id){
+        $getData = 'SELECT * FROM tbl_' . $con_id;
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
     function getUser($conn) {
         $liveUser = $_POST["username"];
         // echo $liveUser;

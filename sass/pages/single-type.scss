@@ -1,0 +1,30 @@
+// 
+// Styles for mobile version
+//
+.single-type-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $purple;
+}
+
+.single-type-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top:30px;
+    margin-bottom: 30px;
+
+    .content-slider-movie{
+        width:106.3px;
+    }
+}
+
+@media screen and (min-width:720px){
+    .single-type-container{
+        .content-slider-movie{
+            width:120px;
+        }
+    }
+}
