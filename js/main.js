@@ -25,7 +25,7 @@ const router = new VueRouter({
       { path: '/musicType/:type/:age', name:"musicType", component: MusicTypeComponent, meta: { requiresAuth: true }},
       { path: '/tvType/:type/:age', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
-      { path: '/allusers', name: "allusers", component: AllUsersComponent, meta: { requiresAuth: true }},
+      { path: '/allusers/:group', name: "allusers", component: AllUsersComponent, meta: { requiresAuth: true }},
       { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
 });
@@ -37,15 +37,10 @@ const vm = new Vue({
     data: {
       authenticated: false,
       administrator: false,
+      preauthenticated: false,
 
-      // mockAccount: {
-      //   username: "user",
-      //   password: "password"
-      // },
-
+      loginUser: [],
       user: []
-
-      //currentUser: {},
     },
 
     created: function () {
@@ -53,6 +48,7 @@ const vm = new Vue({
       // if the cached user exists, then just navigate to their user home page
 
       // the localstorage session will persist until logout
+      // this.checkAuthenticated();
     },
 
     methods: {
@@ -63,12 +59,19 @@ const vm = new Vue({
         this.user = data;
       },
 
+      setPreAuthenticated(status, data) {
+        // this means that authentication has passed and we have a valid user
+        this.preauthenticated = status;
+        this.loginUser = data;
+      },
+
       logout() {
         // delete local session
 
         // push user back to login page
         this.$router.push({ path: "/start" });
         this.authenticated = false;
+        this.preauthenticated = false;
       },
 
       openMobileNav(){
@@ -79,6 +82,17 @@ const vm = new Vue({
       closeMobileNav(){
         let mobileNav = document.querySelector('.mobile-nav');
         mobileNav.classList.remove('mobile-nav-open');
+      },
+
+      checkAuthenticated(){
+        const url = `./includes/index.php?checkAuth=1`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          console.log(`checkAuthentiacted = ${data}`);
+          this.authenticated = data;
+        })
+        .catch((err) => {console.error(err)})
       }
       
     },
@@ -87,17 +101,20 @@ const vm = new Vue({
 });
 
 router.beforeEach((to,from,next) => {
-    let userStatus = vm.authenticated;
+  let userAuthenticated = vm.authenticated;
+  let userPreAuthenticated = vm.preauthenticated;
 
-    if(to.matched.some(record => record.meta.requiresAuth)){
-      if(userStatus){
-        console.log("redirecting user to next page");
-        next();
-      } else {
-        console.log("redirecting user to login");
-        next({name: 'login'});
-      }
-    } else {
+  if(to.matched.some(record => record.meta.requiresAuth)){
+    if(userAuthenticated || userPreAuthenticated){
+      console.log("redirecting user to next page");
       next();
+    } 
+    else {
+      console.log("redirecting user to login");
+      next({name: 'login'});
     }
+  } else {
+    next();
+    console.log('Page does not require auth');
+  }
 });

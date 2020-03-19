@@ -109,8 +109,8 @@
         return $result;
     };
 
-    function getAllUsers($conn){
-        $getData = 'SELECT * FROM tbl_users';
+    function getAllUsers($conn, $group){
+        $getData = 'SELECT * FROM tbl_users WHERE user_group = "' . $group . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
@@ -124,9 +124,13 @@
 
     function getUser($conn) {
         $liveUser = $_POST["username"];
+        $livePassword = $_POST["password"];
         // echo $liveUser;
 
-        $getUser = 'SELECT * FROM tbl_users WHERE user_uname = "' . $liveUser . '"';
+        $_SESSION['user_id'] = $liveUser . '1232';
+        $_SESSION['user_name'] = $liveUser;
+
+        $getUser = 'SELECT * FROM tbl_login WHERE login_uname = "' . $liveUser . '" AND login_password = "' . $livePassword . '"';
         $runQuery = $conn->query($getUser);
 
         $result = array();
