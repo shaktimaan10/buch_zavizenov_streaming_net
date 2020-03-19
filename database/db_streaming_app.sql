@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 14, 2020 at 01:00 AM
+-- Generation Time: Mar 19, 2020 at 03:00 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -25,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_movies`
+-- Table structure for table `tbl_movie`
 --
 
-DROP TABLE IF EXISTS `tbl_movies`;
-CREATE TABLE IF NOT EXISTS `tbl_movies` (
+DROP TABLE IF EXISTS `tbl_movie`;
+CREATE TABLE IF NOT EXISTS `tbl_movie` (
   `movie_id` int(11) NOT NULL AUTO_INCREMENT,
   `movie_name` varchar(40) NOT NULL,
   `movie_desc` text NOT NULL,
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS `tbl_movies` (
 ) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbl_movies`
+-- Dumping data for table `tbl_movie`
 --
 
-INSERT INTO `tbl_movies` (`movie_id`, `movie_name`, `movie_desc`, `movie_country`, `movie_genre`, `movie_poster`, `movie_video`, `movie_date`, `movie_score`, `movie_pg`) VALUES
+INSERT INTO `tbl_movie` (`movie_id`, `movie_name`, `movie_desc`, `movie_country`, `movie_genre`, `movie_poster`, `movie_video`, `movie_date`, `movie_score`, `movie_pg`) VALUES
 (1, 'Parasite', 'A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.', 'South Korea', 'Comedy, Drama, Thriller', 'parasite.jpg', 'parasite.mp4', '2019', 8.6, 4),
-(2, 'Once Upon a Time... in Hollywood', 'A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood\'s Golden Age in 1969 Los Angeles.', 'USA', 'Comedy,Drama ', 'once.jpg', 'once.mp4', '2019', 7.7, 4),
+(2, 'Once Upon a Time... in Hollywood', 'A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood\'s Golden Age in 1969 Los Angeles.', 'USA', 'Comedy, Drama ', 'once.jpg', 'once.mp4', '2019', 7.7, 4),
 (3, 'Rocketman', 'A musical fantasy about the fantastical human story of Elton John\'s breakthrough years.', 'USA', 'Biography, Drama, Music', 'rocketman.jpg', 'rocketman.mp4', '2019', 7.3, 4),
 (4, 'Goodfellas', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.', 'USA', 'Biography, Crime, Drama', 'goodfellas.jpg', 'goodfellas.mp4', '1990', 8.7, 4),
 (5, 'Teenage Mutant Ninja Turtles', 'Four teenage mutant ninja turtles emerge from the shadows to protect New York City from a gang of criminal ninjas.', 'USA', 'Action, Adventure, Comedy', 'tmnt.jpg', 'tmnt.mp4', '1990', 6.8, 1),
@@ -174,9 +174,8 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`) VALUES
 (1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5),
 (2, 'Andrew', 'Anderson', 'kid1', 'password', 'default.png', 0, 1),
-(3, 'Nitya', 'Buch', 'nb', 'password', 'default.png', 1, 5),
-(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 0),
-(5, 'Chris', 'Anderson', 'kid3', 'password', 'default.png', 0, 3);
+(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 1, 5),
+(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
