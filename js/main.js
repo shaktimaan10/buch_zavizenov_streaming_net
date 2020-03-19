@@ -9,6 +9,7 @@ import SettingsComponent from "./components/SettingsComponent.js";
 import MovieTypeComponent from "./components/MovieTypeComponent.js";
 import MusicTypeComponent from "./components/MusicTypeComponent.js";
 import TvTypeComponent from "./components/TvTypeComponent.js";
+import AllUsersComponent from "./components/AllUsersComponent.js";
 
 // Vue component
 const router = new VueRouter({
@@ -24,6 +25,7 @@ const router = new VueRouter({
       { path: '/musicType/:type/:age', name:"musicType", component: MusicTypeComponent, meta: { requiresAuth: true }},
       { path: '/tvType/:type/:age', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
+      { path: '/allusers', name: "allusers", component: AllUsersComponent, meta: { requiresAuth: true }},
       { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
 });
@@ -67,8 +69,17 @@ const vm = new Vue({
         // push user back to login page
         this.$router.push({ path: "/start" });
         this.authenticated = false;
-      }
+      },
 
+      openMobileNav(){
+        let mobileNav = document.querySelector('.mobile-nav');
+        mobileNav.classList.add('mobile-nav-open');
+      },
+
+      closeMobileNav(){
+        let mobileNav = document.querySelector('.mobile-nav');
+        mobileNav.classList.remove('mobile-nav-open');
+      }
       
     },
 

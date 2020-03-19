@@ -1,0 +1,118 @@
+//
+// Styles for mobile version
+// 
+.all-users-section{
+    background-color: $purple;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-users-container{
+    margin-top:35px;
+
+    h1{
+        margin-bottom: 35px;
+    }
+}
+
+.all-users-single{
+    width:320px;
+    height:280px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+
+    h2{
+        color: $purple;
+        margin-top:15px;
+    }
+}
+
+.all-user-single-frame{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+    img{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        width:150%;
+    }
+}
+
+// 
+// Styles for tablet version
+// 
+@media screen and (min-width:720px){
+
+    .all-users-section{
+        min-height: calc(100vh - 110px);
+    }
+
+    .all-users-container{
+        margin-top:0px;
+
+        h1{
+            margin-bottom: 60px;
+        }
+    }
+
+    .all-users-list{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .all-users-single{
+        width:47%;
+        height:300px;
+    }
+}
+
+// 
+// Styles for desktop version
+// 
+@media screen and (min-width:1200px){
+
+    .all-users-container {
+        h1{
+            margin-bottom: 70px;
+        }
+    }
+
+    .all-users-single{
+        width:23%;
+        height:280px;
+        cursor:pointer;
+        margin-bottom: 0px;
+        transition: 0.7s all ease-in-out;
+
+        h2{
+            color:black;
+            transition: 0.7s all ease-in-out;
+        }
+    }
+
+    .all-users-single:hover{
+        -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+
+        h2{
+            color:$purple;
+        }
+    }
+}

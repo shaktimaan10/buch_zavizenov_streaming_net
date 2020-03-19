@@ -49,6 +49,12 @@
         echo json_encode($singleType);
     } 
 
+    if(isset($_GET["getAllUsers"])) {
+        $allUsers = getAllUsers($pdo);
+     
+        echo json_encode($allUsers);
+    } 
+
     if (isset($_GET['user'])) {
         $user = getUser($pdo);
 
