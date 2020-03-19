@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 19, 2020 at 05:46 PM
+-- Generation Time: Mar 19, 2020 at 11:32 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -197,8 +197,8 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`, `user_group`) VALUES
 (1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5, 1),
-(2, 'Andrew', 'Anderson', 'kid1', 'password', 'default.png', 0, 1, 1),
-(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 1, 5, 1),
+(2, 'Jane', 'Anderson', 'kid1', 'password', 'default.png', 0, 1, 1),
+(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 0, 5, 1),
 (4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 3, 1),
 (6, 'Vito', 'Corleone', 'vito-corleone', 'password', 'vito.jpg', 1, 5, 2),
 (7, 'Michael', 'Corleone', 'michael', 'password', 'michael.jpg', 0, 4, 2),

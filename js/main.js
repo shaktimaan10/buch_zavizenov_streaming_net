@@ -26,7 +26,7 @@ const router = new VueRouter({
       { path: '/tvType/:type/:age', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/allusers/:group', name: "allusers", component: AllUsersComponent, meta: { requiresAuth: true }},
-      { path: '/settings', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
+      { path: '/settings/:group', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
     ]
 });
 
@@ -105,11 +105,16 @@ router.beforeEach((to,from,next) => {
   let userPreAuthenticated = vm.preauthenticated;
 
   if(to.matched.some(record => record.meta.requiresAuth)){
-    if(userAuthenticated || userPreAuthenticated){
-      console.log("redirecting user to next page");
-      next();
-    } 
-    else {
+    if(userPreAuthenticated){
+      if(userAuthenticated){
+        // console.log("redirecting user to next page");
+        next();
+      } else {
+        // next({ path: '/allusers', params: { group: vm.loginUser['login_users']}});
+        // console.log("redirect to all users");
+        next();
+      }
+    } else {
       console.log("redirecting user to login");
       next({name: 'login'});
     }

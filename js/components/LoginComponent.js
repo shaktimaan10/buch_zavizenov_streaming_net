@@ -52,7 +52,7 @@ export default {
                 .then(data => {
                     //console.log(data);
                     if(data.length == 0){
-                        console.log("User doesn't exist!");
+                        alert("Wrong password or user doesn't exist!");
                         return;
                     } else {
                         this.$emit("preauthenticated", true, data[0]);

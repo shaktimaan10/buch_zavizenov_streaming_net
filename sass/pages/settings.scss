@@ -156,6 +156,41 @@
     font-size: 14px;
 }
 
+.profile-logout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:30px;
+    margin-bottom: 30px;
+
+    a{
+        font-family: "Lato",sans-serif;
+        width: 250px;
+        height: 40px;
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .switch-btn{
+        background-color: $purple;
+        margin-bottom: 15px;
+    }
+
+    .logout-btn{
+        background-color: red;
+    }
+}
+
+.profile-change-section-user{
+    margin-top:0px;
+}
+
 
 // 
 // Styles for tablet version
@@ -176,6 +211,16 @@
     .single-profile{
         width:50%;
         border: none;
+    }
+
+    .profile-logout-container{
+        flex-direction: row;
+        align-items: center;
+
+        .switch-btn{
+            margin-bottom: 0px;
+            margin-right:30px;
+        }
     }
 }
 
