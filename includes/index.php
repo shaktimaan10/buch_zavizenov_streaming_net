@@ -50,7 +50,7 @@
     } 
 
     if(isset($_GET["getAllUsers"])) {
-        $allUsers = getAllUsers($pdo);
+        $allUsers = getAllUsers($pdo, $_GET['userGroup']);
      
         echo json_encode($allUsers);
     } 
@@ -60,5 +60,11 @@
 
         echo json_encode($user);
     }
+
+    // if (isset($_GET['checkAuth'])) {
+    //     $checkedUser = checkUser($pdo);
+
+    //     echo json_encode($checkedUser);
+    // }
 
     

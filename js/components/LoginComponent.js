@@ -50,16 +50,14 @@ export default {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
+                    //console.log(data);
                     if(data.length == 0){
                         console.log("User doesn't exist!");
                         return;
                     } else {
-                        // we got a user back, let's set authneticate event
-                        this.$emit("authenticated", true, data[0]);
+                        this.$emit("preauthenticated", true, data[0]);
                         // reroute to user component so we can see all user
-                        // this.$router.push({ name: 'catalog', params: {age: data[0]['user_permissions']}});
-                        this.$router.push({ name: 'allusers'});
+                        this.$router.push({ name: 'allusers', params: { group: data[0]['login_users']}});
                     }
                 })
                 .catch((error) => console.log(error));
