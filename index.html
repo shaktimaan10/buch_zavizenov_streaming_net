@@ -14,14 +14,14 @@
 <body>
     <main id="app">
         <div v-if="authenticated" class="mobile-nav">
-            <div class="mobile-nav-cross">
+            <div @click="closeMobileNav()" class="mobile-nav-cross">
                 <img src="images/cross-purple.svg" alt="cross-btn">
             </div>
-            <div class="mobile-nav-list">
-                <a href="catalog.html">Home</a>
-                <a href="catalog.html">Movies</a>
-                <a href="catalog.html">TV</a>
-                <a href="catalog.html">Msic</a>
+            <div @click="closeMobileNav()" class="mobile-nav-list">
+                <router-link :to="{ name: 'catalog', params: {age: user['user_permissions'] }}">Home</router-link>
+                <router-link :to="{ name: 'movieType', params: {type: 'movie', age: user['user_permissions'] }}">Movies</router-link>
+                <router-link :to="{ name: 'tvType', params: {type: 'tv', age: user['user_permissions']}}">TV</router-link>
+                <router-link :to="{ name: 'musicType', params: {type: 'music', age: user['user_permissions']}}">Music</router-link>
             </div>
         </div>
         <header>
@@ -40,7 +40,7 @@
                     </router-link>
                 </div>
                 <router-link v-if="!authenticated" to="/login" href="login.html" class="header-cta">Log In</router-link>
-                <div v-if="authenticated" class="header-burger">
+                <div @click="openMobileNav()" v-if="authenticated" class="header-burger">
                     <img src="images/burger.svg" alt="burger icon">
                 </div>
             </div>
