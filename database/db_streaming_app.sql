@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 19, 2020 at 03:00 PM
+-- Generation Time: Mar 19, 2020 at 05:46 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_streaming_app`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_login`
+--
+
+DROP TABLE IF EXISTS `tbl_login`;
+CREATE TABLE IF NOT EXISTS `tbl_login` (
+  `login_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login_uname` varchar(15) NOT NULL,
+  `login_password` varchar(20) NOT NULL,
+  `login_users` int(2) NOT NULL,
+  PRIMARY KEY (`login_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_login`
+--
+
+INSERT INTO `tbl_login` (`login_id`, `login_uname`, `login_password`, `login_users`) VALUES
+(1, 'user1', 'userpassword', 1),
+(2, 'user2', 'userpassword', 2);
 
 -- --------------------------------------------------------
 
@@ -164,18 +187,23 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `user_avatar` varchar(30) NOT NULL,
   `user_isadmin` tinyint(1) NOT NULL,
   `user_permissions` int(1) NOT NULL,
+  `user_group` int(2) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`) VALUES
-(1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5),
-(2, 'Andrew', 'Anderson', 'kid1', 'password', 'default.png', 0, 1),
-(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 1, 5),
-(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 3);
+INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`, `user_group`) VALUES
+(1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5, 1),
+(2, 'Andrew', 'Anderson', 'kid1', 'password', 'default.png', 0, 1, 1),
+(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 1, 5, 1),
+(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 3, 1),
+(6, 'Vito', 'Corleone', 'vito-corleone', 'password', 'vito.jpg', 1, 5, 2),
+(7, 'Michael', 'Corleone', 'michael', 'password', 'michael.jpg', 0, 4, 2),
+(8, 'Tom', 'Hagen', 'tom-h', 'password', 'tom.jpg', 0, 3, 2),
+(9, 'Kay', 'Adams', 'kay', 'password', 'kay.jpg', 0, 2, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
