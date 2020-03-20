@@ -122,6 +122,45 @@
         return $result;
     };
 
+    function updateUser($conn, $userId, $userName, $userPermissions){
+        $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_permissions = "' . $userPermissions . '" WHERE user_id = "' . $userId . '"';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
+    function deleteUser($conn, $userId){
+        $getData = 'DELETE FROM tbl_users WHERE user_id = "' . $userId . '"';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
+    function updateUserId($conn, $userId, $userName){
+        $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" WHERE user_id = "' . $userId . '"';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
     function getUser($conn) {
         $liveUser = $_POST["username"];
         $livePassword = $_POST["password"];

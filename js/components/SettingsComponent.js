@@ -12,17 +12,17 @@ export default {
                 </div>
             </div>
         </section>
-        <section class="profile-change-section" v-if="currentUser['user_isadmin'] == 1">
+        <section class="profile-change-section profile-change-section-admin" v-if="currentUser['user_isadmin'] == 1">
             <div class="container profile-change-container">
                 <div class="change-img">
-                    <img src="images/dog.jpg" alt="profile-img">
+                    <img :src="'images/' + userToChange.user_avatar" alt="profile-img">
                 </div>
                 <div class="change-details">
-                    <form action="">
+                    <form @submit.prevent="updateAdminUser()">
                         <label for="">Name</label>
-                        <input type="text" value="shaktimaan">
+                        <input type="text" v-model="userToChange['user_fname']">
                         <label for="">Parental control</label>
-                        <select id="parental-contro" name="restriction">
+                        <select id="parental-contro" name="restriction" v-model="userToChange['user_permissions']">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -32,22 +32,22 @@ export default {
                         </select>
                         <button type="submit">Save changes</button>
                     </form>
-                    <div class="change-details-delete">Delete profile</div>
+                    <div class="change-details-delete" @click="deleteAdminUser()">Delete profile</div>
                 </div>
             </div>
         </section>
-        <section class="profile-change-section profile-change-section-user" v-if="currentUser['user_isadmin'] == 0">
+        <section class="profile-change-section profile-change-section-user profile-change-section-show" v-if="currentUser['user_isadmin'] == 0">
             <div class="container profile-change-container">
                 <div class="change-img">
-                    <img src="images/dog.jpg" alt="profile-img">
+                    <img :src="'images/'+ currentUser.user_avatar" alt="profile-img">
                 </div>
                 <div class="change-details">
-                    <form action="">
+                    <form @submit.prevent="updateUser()">
                         <label for="">Name</label>
-                        <input type="text" value="shaktimaan">
+                        <input type="text" v-model="currentUser['user_fname']">
                         <button type="submit">Save changes</button>
                     </form>
-                    <div class="change-details-delete">Delete profile</div>
+                    <div class="change-details-delete" @click="deleteUser()">Delete profile</div>
                 </div>
             </div>
         </section>
@@ -86,6 +86,10 @@ export default {
         },
         showUserToChange(userNumber){
             console.log(userNumber);
+            this.userToChange = this.allUsers[userNumber];
+            if(this.currentUser['user_isadmin']){
+                document.querySelector('.profile-change-section-admin').classList.add('profile-change-section-show');
+            }
         },
         switchUser(){
             this.$router.push({ name: "allusers", params:{group: this.currentLoginUser['login_users']} });
@@ -100,6 +104,57 @@ export default {
             this.$router.push({ path: "/login" });
             this.$root.$data.authenticated = false;
             this.$root.$data.preauthenticated = false;
+        },
+        updateAdminUser(){
+            const url = `./includes/index.php?updateUser=${this.userToChange['user_id']}&updateName=${this.userToChange['user_fname']}&updatePermissions=${this.userToChange['user_permissions']}`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch((err) => {console.error(err)})
+            document.querySelector('.profile-change-section-admin').classList.remove('profile-change-section-show');
+            this.userToChange = [];
+        },
+        deleteAdminUser(){
+            if(this.userToChange['user_id'] == this.currentUser['user_id']){
+                alert("You can't delete admin user");
+                return;
+            }
+            const url = `./includes/index.php?deleteUser=${this.userToChange['user_id']}`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch((err) => {console.error(err)})
+            document.querySelector('.profile-change-section-admin').classList.remove('profile-change-section-show');
+            
+            this.getAllUsers();
+        },
+        updateUser(){
+            const url = `./includes/index.php?updateUserId=${this.currentUser['user_id']}&updateName=${this.currentUser['user_fname']}`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch((err) => {console.error(err)})
+
+            // Send tocatalog page
+            alert('user updated');
+            this.$router.push({ name: 'catalog', params: {age: this.currentUser['user_permissions']}});
+        },
+        deleteUser(){
+            const url = `./includes/index.php?deleteUserId=${this.currentUser['user_id']}`;
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch((err) => {console.error(err)})
+
+            this.logoutUser();
         }
     }
 }

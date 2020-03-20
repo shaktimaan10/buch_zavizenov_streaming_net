@@ -52,6 +52,15 @@
 .profile-change-section{
     background-color: $purple;
     margin-top: 60px;
+    display: none;
+}
+
+.profile-change-section-user{
+    margin-top:0px;
+}
+
+.profile-change-section-show{
+    display: flex;
 }
 
 .profile-change-container{

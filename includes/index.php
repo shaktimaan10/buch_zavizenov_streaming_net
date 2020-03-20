@@ -55,6 +55,30 @@
         echo json_encode($allUsers);
     } 
 
+    if(isset($_GET["updateUser"])) {
+        $updatedUserAdmin = updateUser($pdo, $_GET['updateUser'], $_GET['updateName'], $_GET['updatePermissions']);
+     
+        echo json_encode($updatedUserAdmin);
+    } 
+
+    if(isset($_GET["deleteUser"])) {
+        $updatedUserAdmin = deleteUser($pdo, $_GET['deleteUser']);
+     
+        echo json_encode($updatedUserAdmin);
+    } 
+
+    if(isset($_GET["updateUserId"])) {
+        $updatedUser = updateUserId($pdo, $_GET['updateUserId'], $_GET['updateName']);
+     
+        echo json_encode($updatedUser);
+    } 
+
+    if(isset($_GET["deleteUserId"])) {
+        $updatedUser = deleteUser($pdo, $_GET['deleteUserId']);
+     
+        echo json_encode($updatedUser);
+    } 
+
     if (isset($_GET['user'])) {
         $user = getUser($pdo);
 
