@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 19, 2020 at 11:32 PM
+-- Generation Time: Mar 20, 2020 at 10:58 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `tbl_movie` (
   `movie_score` float NOT NULL,
   `movie_pg` int(1) NOT NULL,
   PRIMARY KEY (`movie_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_movie`
@@ -93,7 +93,11 @@ INSERT INTO `tbl_movie` (`movie_id`, `movie_name`, `movie_desc`, `movie_country`
 (20, 'Frozen II', 'Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa\'s powers in order to save their kingdom.', 'USA', 'Animation, Adventure, Comedy', 'frozen2.jpg', 'frozen2.mp4', '2019', 7, 1),
 (21, 'Toy Story', 'A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy\'s room.', 'USA', 'Animation, Adventure, Comedy', 'toy-story.jpg', 'toy-story.mp4', '1995', 8.3, 0),
 (22, 'Pokémon Detective Pikachu', 'In a world where people collect Pokémon to do battle, a boy comes across an intelligent talking Pikachu who seeks to be a detective.', 'USA', 'Action, Adventure, Comedy', 'pikachu-detective.jpg', 'pikachu-detective.mp4', '2019', 6.6, 1),
-(23, 'The Lion King', 'After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.', 'USA', 'Animation, Adventure, Drama', 'lion-king.jpg', 'lion-king.mp4', '2019', 6.9, 1);
+(23, 'The Lion King', 'After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.', 'USA', 'Animation, Adventure, Drama', 'lion-king.jpg', 'lion-king.mp4', '2019', 6.9, 1),
+(24, 'Moana', 'In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana\'s island, she answers the Ocean\'s call to seek out the Demigod to set things right.', 'USA', 'Animation, Adventure, Comedy', 'moana.jpg', 'moana.mp4', '2016', 7.6, 1),
+(25, 'Zootopia', 'In a city of anthropomorphic animals, a rookie bunny cop and a cynical con artist fox must work together to uncover a conspiracy.', 'USA', 'Animation, Adventure, Comedy', 'zootopia.jpg', 'zootopia.mp4', '2016', 8, 1),
+(26, 'Finding Nemo', 'After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.', 'USA', 'Animation, Adventure, Comedy ', 'finding-nemo.jpg', 'finding-nemo.mp4', '2003', 8.1, 0),
+(27, 'Monsters, Inc.', 'In order to power the city, monsters have to scare children so that they scream. However, the children are toxic to the monsters, and after a child gets through, 2 monsters realize things may not be what they think.', 'USA', 'Animation, Adventure, Comedy', 'monsters-inc.jpg', 'monsters-inc.mp4', '2001', 8, 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `tbl_music` (
   `music_date` varchar(30) NOT NULL,
   `music_pg` int(1) NOT NULL,
   PRIMARY KEY (`music_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_music`
@@ -131,7 +135,12 @@ INSERT INTO `tbl_music` (`music_id`, `music_name`, `music_author`, `music_genre`
 (10, 'Paint It Black', 'The Rolling Stones', 'Rock', 'paint-black.jpg', 'paint-black.mp4', '1966', 3),
 (11, 'My Way', 'Frank Sinatra', 'Traditional-pop', 'my-way.jpg', 'my-way.mp4', '1969', 3),
 (12, 'Don\'t Be Cruel', 'Elvis Presley', 'Rock-n-roll', 'dont-be-cruel.jpg', 'dont-be-cruel.mp4', '1956', 3),
-(13, 'Earth Angel', 'The Penguins', 'Blues', 'earth-angel.jpg', 'earth-angel.mp4', '1954', 3);
+(13, 'Earth Angel', 'The Penguins', 'Blues', 'earth-angel.jpg', 'earth-angel.mp4', '1954', 3),
+(14, 'Story of My Life', 'One Direction', 'Pop', 'story-of-my-life.jpg', 'story-of-my-life.mp4', '2013', 1),
+(15, 'Yummy', 'Justin Bieber', 'Pop', 'yummy.jpg', 'yummy.mp4', '2020', 2),
+(16, 'Lose You To Love Me', 'Selena Gomez', 'Pop', 'lose-you-to.jpg', 'lose-you-to.mp4', '2019', 2),
+(17, '7 Rings', 'Ariana Grande', 'Pop', '7-rings.jpg', '7-rings.mp4', '2019', 2),
+(18, 'Side To Side', 'Ariana Grande', 'Reggae fusion, Pop', 'side-to-side.jpg', 'side-to-side.mp4', '2016', 3);
 
 -- --------------------------------------------------------
 
@@ -151,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tv` (
   `tv_date` varchar(30) NOT NULL,
   `tv_pg` int(1) NOT NULL,
   PRIMARY KEY (`tv_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_tv`
@@ -169,7 +178,10 @@ INSERT INTO `tbl_tv` (`tv_id`, `tv_name`, `tv_desc`, `tv_country`, `tv_genre`, `
 (9, 'Batman', 'The Caped Crusader and his young ward battle evildoers in Gotham City.', 'USA', 'Action, Adventure, Comedy', 'batman.jpg', 'batman.mp4', '1966', 1),
 (10, 'The Flintstones', 'The misadventures of two modern-day Stone Age families, the Flintstones and the Rubbles.', 'USA', 'Animation, Adventure, Comedy', 'flintstones.jpg', 'flintstones.mp4', '1960', 1),
 (11, 'The Twilight Zone', 'Ordinary people find themselves in extraordinarily astounding situations, which they each try to solve in a remarkable manner.', 'USA', 'Drama, Fantasy, Horror', 'twilight-zone.jpg', 'twilight-zone.mp4', '1959', 3),
-(12, 'Bonanza', 'The Wild West adventures of Ben Cartwright and his sons as they run and defend their Nevada ranch while helping the surrounding community.', 'USA', 'Western', 'bonanza.jpg', 'bonanza.mp4', '1959', 3);
+(12, 'Bonanza', 'The Wild West adventures of Ben Cartwright and his sons as they run and defend their Nevada ranch while helping the surrounding community.', 'USA', 'Western', 'bonanza.jpg', 'bonanza.mp4', '1959', 3),
+(13, 'Dora the Explorer', 'Along with her friend Monkey Boots, Dora goes on adventures.', 'USA', 'Animation, Adventure, Comedy', 'dora-the-explorer.jpg', 'dora-the-explorer.mp4', '2000', 0),
+(14, 'SpongeBob SquarePants ', 'The misadventures of a talking sea sponge who works at a fast food restaurant, attends a boating school, and lives in an underwater pineapple.', 'USA', 'Animation, Comedy, Family', 'spongebob.jpg', 'spongebob.mp4', '1999', 1),
+(15, 'Adventure Time ', 'A 12-year-old boy and his best friend, wise 28-year-old dog with magical powers, go on a series of surreal adventures with each other.', 'USA', 'Animation, Action, Adventure', 'adventure-time.jpg', 'adventure-time.mp4', '2010', 1);
 
 -- --------------------------------------------------------
 
@@ -189,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `user_permissions` int(1) NOT NULL,
   `user_group` int(2) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
@@ -199,11 +211,11 @@ INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `u
 (1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5, 1),
 (2, 'Jane', 'Anderson', 'kid1', 'password', 'default.png', 0, 1, 1),
 (3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 0, 5, 1),
-(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 3, 1),
+(4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 2, 1),
 (6, 'Vito', 'Corleone', 'vito-corleone', 'password', 'vito.jpg', 1, 5, 2),
-(7, 'Michael', 'Corleone', 'michael', 'password', 'michael.jpg', 0, 4, 2),
+(7, 'Michael', 'Corleone', 'michael', 'password', 'michael.jpg', 0, 5, 2),
 (8, 'Tom', 'Hagen', 'tom-h', 'password', 'tom.jpg', 0, 3, 2),
-(9, 'Kay', 'Adams', 'kay', 'password', 'kay.jpg', 0, 2, 2);
+(9, 'Kay', 'Adams', 'kay', 'password', 'kay.jpg', 0, 1, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
