@@ -56,6 +56,7 @@ export default {
                         return;
                     } else {
                         this.$emit("preauthenticated", true, data[0]);
+                        localStorage.setItem('PreauthenticatedUser', JSON.stringify(data[0]));
                         // reroute to user component so we can see all user
                         this.$router.push({ name: 'allusers', params: { group: data[0]['login_users']}});
                     }

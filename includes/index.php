@@ -74,9 +74,9 @@
     } 
 
     if(isset($_GET["deleteUserId"])) {
-        $updatedUser = deleteUser($pdo, $_GET['deleteUserId']);
+        $deletedUser = deleteUser($pdo, $_GET['deleteUserId']);
      
-        echo json_encode($updatedUser);
+        echo json_encode($deletedUser);
     } 
 
     if (isset($_GET['user'])) {
@@ -84,11 +84,5 @@
 
         echo json_encode($user);
     }
-
-    // if (isset($_GET['checkAuth'])) {
-    //     $checkedUser = checkUser($pdo);
-
-    //     echo json_encode($checkedUser);
-    // }
 
     
