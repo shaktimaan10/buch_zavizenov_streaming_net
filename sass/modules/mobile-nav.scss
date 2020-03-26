@@ -43,11 +43,29 @@
         font-size:20px;
         text-decoration: none;
         font-family: "Lato";
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
 
     a:last-child{
         margin-bottom: 0px;
+    }
+}
+
+.mobile-nav-user{
+    width:150px;
+    height: 150px;
+    border-radius: 50%;
+    border:5px solid $purple;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+
+    img{
+        width:130%;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
     }
 }
 

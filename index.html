@@ -18,7 +18,10 @@
                 <img src="images/cross-purple.svg" alt="cross-btn">
             </div>
             <div @click="closeMobileNav()" class="mobile-nav-list">
-                <router-link :to="{ name: 'catalog', params: {age: user['user_permissions'] }}">Home</router-link>
+                <router-link :to="{ name: 'settings', params: {group: loginUser['login_users']}}" class="mobile-nav-user" v-if="authenticated">
+                    <img :src="'images/' + user.user_avatar" alt="user-icon">
+                </router-link>
+                <router-link :to="{ name: 'catalog', params: {age: user['user_permissions'] }}">Catalog</router-link>
                 <router-link :to="{ name: 'movieType', params: {type: 'movie', age: user['user_permissions'] }}">Movies</router-link>
                 <router-link :to="{ name: 'tvType', params: {type: 'tv', age: user['user_permissions']}}">TV</router-link>
                 <router-link :to="{ name: 'musicType', params: {type: 'music', age: user['user_permissions']}}">Music</router-link>
