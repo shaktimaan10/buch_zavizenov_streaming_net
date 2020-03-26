@@ -46,9 +46,24 @@ const vm = new Vue({
     created: function () {
       // do a localstorage session check and set authenticated to true if the session still exists
       // if the cached user exists, then just navigate to their user home page
+      if(localStorage.getItem("PreauthenticatedUser")){
+        let preauthenticatedUser = JSON.parse(localStorage.getItem("PreauthenticatedUser"));
+        this.preauthenticated = true;
+        this.loginUser = preauthenticatedUser;
 
-      // the localstorage session will persist until logout
-      // this.checkAuthenticated();
+        if(localStorage.getItem("AuthenticatedUser")){
+          let authenticatedUser = JSON.parse(localStorage.getItem("AuthenticatedUser"));
+          this.authenticated = true;
+          this.administrator = authenticatedUser['user_isadmin'];
+          this.user = authenticatedUser;
+        }else {
+          this.$router.push({ name: 'allusers', params: { group: this.loginUser['login_users']}});
+        }
+
+      } else {
+        console.log("go to login page");
+        this.$router.push({ path: "/start" });
+      }
     },
 
     methods: {
@@ -67,7 +82,12 @@ const vm = new Vue({
 
       logout() {
         // delete local session
-
+        if(localStorage.getItem('AuthenticatedUser')){
+          localStorage.removeItem('AuthenticatedUser');
+        }
+        if(localStorage.getItem('PreauthenticatedUser')){
+          localStorage.removeItem('PreauthenticatedUser');
+        }
         // push user back to login page
         this.$router.push({ path: "/start" });
         this.authenticated = false;
@@ -82,17 +102,6 @@ const vm = new Vue({
       closeMobileNav(){
         let mobileNav = document.querySelector('.mobile-nav');
         mobileNav.classList.remove('mobile-nav-open');
-      },
-
-      checkAuthenticated(){
-        const url = `./includes/index.php?checkAuth=1`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          console.log(`checkAuthentiacted = ${data}`);
-          this.authenticated = data;
-        })
-        .catch((err) => {console.error(err)})
       }
       
     },
@@ -115,11 +124,11 @@ router.beforeEach((to,from,next) => {
         next();
       }
     } else {
-      console.log("redirecting user to login");
+      // console.log("redirecting user to login");
       next({name: 'login'});
     }
   } else {
     next();
-    console.log('Page does not require auth');
+    // console.log('Page does not require auth');
   }
 });

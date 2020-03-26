@@ -92,6 +92,10 @@ export default {
             }
         },
         switchUser(){
+            if(localStorage.getItem('AuthenticatedUser')){
+                localStorage.removeItem('AuthenticatedUser');
+            }
+
             this.$router.push({ name: "allusers", params:{group: this.currentLoginUser['login_users']} });
             this.$root.$data.user = [];
             this.$root.$data.preauthenticated = true;
@@ -99,7 +103,12 @@ export default {
         },
         logoutUser() {
             // delete local session
-
+            if(localStorage.getItem('AuthenticatedUser')){
+                localStorage.removeItem('AuthenticatedUser');
+            }
+            if(localStorage.getItem('PreauthenticatedUser')){
+                localStorage.removeItem('PreauthenticatedUser');
+            }
             // push user back to login page
             this.$router.push({ path: "/login" });
             this.$root.$data.authenticated = false;

@@ -165,7 +165,7 @@
         $liveUser = $_POST["username"];
         $livePassword = $_POST["password"];
         // echo $liveUser;
-
+        // session_start();
         $_SESSION['user_id'] = $liveUser . '1232';
         $_SESSION['user_name'] = $liveUser;
 

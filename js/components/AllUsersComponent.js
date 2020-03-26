@@ -49,6 +49,8 @@ export default {
         loginUser(userIndex){
             if(this.allUsers[userIndex]['user_password'] === this.input.password){
                 this.$emit("authenticated", true, this.allUsers[userIndex]);
+                
+                localStorage.setItem('AuthenticatedUser', JSON.stringify(this.allUsers[userIndex]));
                 this.$router.push({ name: 'catalog', params: {age: this.allUsers[userIndex]['user_permissions']}});
                 return;
             } else {
@@ -61,6 +63,8 @@ export default {
                 document.querySelector('.all-users-single-overlay').classList.add('all-users-single-overlay-show');
             } else {
                 this.$emit("authenticated", true, this.allUsers[userId]);
+                
+                localStorage.setItem('AuthenticatedUser', JSON.stringify(this.allUsers[userId]));
                 this.$router.push({ name: 'catalog', params: {age: this.allUsers[userId]['user_permissions']}});
             }
         }
