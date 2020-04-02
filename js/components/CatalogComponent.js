@@ -26,10 +26,11 @@ export default{
     <section class="content-slider-section recommended-section" id="movies-section">
         <div class="container content-slider-section-header">
             <h2>Movies</h2>
+            <img v-if="this.restriction < 4" src="images/movie.svg"> 
             <router-link :to="{ name: 'movieType', params: {type: 'movie' }}">see all</router-link>
         </div>
-        <div class="content-slider-section-content">
-            <div class="container content-slider">
+        <div class="content-slider-section-content" v-bind:class="{ 'movie-section-kids' : this.restriction < 4 }">
+            <div class="container content-slider" v-bind:class="{ 'content-slider-kids' : this.restriction < 4 }">
                 <div @click="movieSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
                     <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -63,10 +64,11 @@ export default{
     <section class="content-slider-section recommended-section" id="music-section">
         <div class="container content-slider-section-header">
             <h2>Music</h2>
+            <img v-if="this.restriction < 4" src="images/music.svg"> 
             <router-link :to="{ name: 'musicType', params: {type: 'music' }}">see all</router-link>
         </div>
-        <div class="content-slider-section-content">
-            <div class="container content-slider">
+        <div class="content-slider-section-content" v-bind:class="{ 'music-section-kids' : this.restriction < 4 }">
+            <div class="container content-slider"  v-bind:class="{ 'content-slider-kids' : this.restriction < 4 }">
                 <div @click="musicSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
                     <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -100,10 +102,11 @@ export default{
     <section class="content-slider-section recommended-section" id="tv-section">
         <div class="container content-slider-section-header">
             <h2>Tv</h2>
+            <img v-if="this.restriction < 4" src="images/tv.svg"> 
             <router-link :to="{ name: 'tvType', params: {type: 'tv' }}">see all</router-link>
         </div>
-        <div class="content-slider-section-content">
-            <div class="container content-slider">
+        <div class="content-slider-section-content" v-bind:class="{ 'tv-section-kids' : this.restriction < 4 }">
+            <div class="container content-slider" v-bind:class="{ 'content-slider-kids' : this.restriction < 4 }">
                 <div @click="tvSliderLeft()" class="content-slider-arrow content-slider-arrow-left">
                     <svg viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M72.4264 19L8 61.4264L72.4264 103.853" stroke="#662D91" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>

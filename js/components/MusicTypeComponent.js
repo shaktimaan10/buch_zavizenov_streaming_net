@@ -1,6 +1,6 @@
 export default {
     template: `
-    <section class="single-type-section">
+    <section class="single-type-section" v-bind:class="{ 'music-section-kids' : this.age < 4 }">
         <div class="container single-type-filters">
             <div @click="filterContent('All')" v-bind:class="{ 'single-type-filter-active' : filter =='All' }" class="single-type-filter ">All</div>
             <div @click="filterContent('Rap')" v-bind:class="{ 'single-type-filter-active' : filter =='Rap' }" class="single-type-filter">Rap</div>
