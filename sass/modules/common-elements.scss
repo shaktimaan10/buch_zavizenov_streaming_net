@@ -1,6 +1,10 @@
 //
 // Styles for the mobile version
 //
+body{
+    overflow-x: hidden;
+}
+
 .container{
     width: 320px;
     display: flex;
@@ -55,6 +59,11 @@ p{
 // Styles for the tablet version
 // 
 @media screen and (min-width:720px){
+    body{
+        width:100vw;
+        overflow-x: hidden;
+    }
+
     .container{
         width:720px;
     }
