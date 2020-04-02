@@ -9,7 +9,7 @@ export default {
             </div>
         </section>
         <section class="reason-section">
-            <div class="container reason-section-container">
+            <div class="container reason-section-container reason-section-container-one">
                 <div class="reason-section-img">
                     <img src="images/device-mockup.jpg" alt="device-mockup">
                 </div>
@@ -51,5 +51,33 @@ export default {
             </div>
         </section>
     </div>
-     `
+     `,
+
+    mounted(){
+        this.toggleReasons();
+    },
+
+    methods:{
+        toggleReasons(){
+            let wrappers = document.querySelectorAll('.reason-section');
+            let deviceOffset = 200;
+            if(document.width < 720){
+                deviceOffset = 200;
+            }
+            if(document.width > 719 && document.width < 1200){
+                deviceOffset = 300;
+            } else {
+                deviceOffset = 500;
+            }
+            wrappers.forEach(function(wrapper) {
+                var waypoint = new Waypoint({
+                    element: wrapper,
+                    handler: function() {
+                      wrapper.classList.toggle("reason-section-show");
+                    },
+                    offset: deviceOffset
+                })
+            })
+        }
+    }
 }

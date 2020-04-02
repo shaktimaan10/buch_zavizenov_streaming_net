@@ -109,10 +109,19 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    position: relative;
 
     h2, a{
         color:black;
         text-decoration: none;
+    }
+
+    img{
+        width:120px;
+        position: absolute;
+        top:0px;
+        left:50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -131,6 +140,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.content-slider-kids{
+    padding-top:50px;
+}
+
+.tv-section-kids{
+    background-color: #FECA18 !important;
+}
+
+.music-section-kids{
+    background-color: #0EA3C0 !important;
+}
+
+.movie-section-kids{
+    background-color: #C43394 !important;
 }
 
 .content-slider-arrow {
