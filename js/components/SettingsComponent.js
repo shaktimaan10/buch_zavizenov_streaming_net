@@ -39,12 +39,14 @@ export default {
         <section class="profile-change-section profile-change-section-user profile-change-section-show" v-if="currentUser['user_isadmin'] == 0">
             <div class="container profile-change-container">
                 <div class="change-img">
-                    <img :src="'images/'+ currentUser.user_avatar" alt="profile-img">
+                    <img :src="'images/'+ userToChange.user_avatar" alt="profile-img">
                 </div>
                 <div class="change-details">
-                    <form @submit.prevent="updateUser()">
+                    <form @submit.prevent="updateUser()" enctype="multipart/form-data">
                         <label for="">Name</label>
-                        <input type="text" v-model="currentUser['user_fname']">
+                        <input type="text" v-model="userToChange['user_fname']">
+                        <label>Image</label>
+                        <input type="file" @change="uploadedImage">
                         <button type="submit">Save changes</button>
                     </form>
                     <div class="change-details-delete" @click="deleteUser()">Delete profile</div>
@@ -64,7 +66,7 @@ export default {
         return {   
             allUsers:[],
             userGroup: this.$route.params.group,
-            currentUser: this.$root.$data.user,
+            currentUser: [],
             currentLoginUser: this.$root.$data.loginUser,
             userToChange:[]
         }
@@ -72,6 +74,7 @@ export default {
 
     created: function() {
         this.getAllUsers();
+        this.determineUserToChange();
     },
 
     methods:{
@@ -89,6 +92,12 @@ export default {
             this.userToChange = this.allUsers[userNumber];
             if(this.currentUser['user_isadmin']){
                 document.querySelector('.profile-change-section-admin').classList.add('profile-change-section-show');
+            }
+        },
+        determineUserToChange(){
+            this.currentUser = Object.assign({}, this.$root.$data.user);
+            if(this.currentUser['user_isadmin'] == 0){
+                this.userToChange =  Object.assign({}, this.currentUser);
             }
         },
         switchUser(){
@@ -142,15 +151,27 @@ export default {
             this.getAllUsers();
         },
         updateUser(){
+            let formDataTwo = new FormData();
+            let newImg = this.currentUser['user_avatar'];
+            formDataTwo.append("image", this.currentUser['user_avatar']);
             const url = `./includes/index.php?updateUserId=${this.currentUser['user_id']}&updateName=${this.currentUser['user_fname']}`;
-            fetch(url)
+
+            fetch(url,{
+                method: "POST",
+                body: formDataTwo
+            })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
             })
             .catch((err) => {console.error(err)})
 
-            // Send tocatalog page
+            // set new image in localStorage
+            let updatedUser = JSON.parse(localStorage.getItem("AuthenticatedUser"));
+            updatedUser['user_avatar'] = newImg['name'];
+            localStorage.setItem('AuthenticatedUser', JSON.stringify(updatedUser));
+
+            // Send to catalog page
             alert('user updated');
             this.$router.push({ name: 'catalog', params: {age: this.currentUser['user_permissions']}});
         },
@@ -164,6 +185,10 @@ export default {
             .catch((err) => {console.error(err)})
 
             this.logoutUser();
+        },
+        uploadedImage(event){
+            // get image to user profile for update
+            this.currentUser['user_avatar'] = event.target.files[0];
         }
     }
 }

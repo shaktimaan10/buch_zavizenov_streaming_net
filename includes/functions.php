@@ -149,16 +149,38 @@
     };
 
     function updateUserId($conn, $userId, $userName){
-        $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" WHERE user_id = "' . $userId . '"';
-        $runQuery = $conn->query($getData);
+        $userImg = $_FILES["image"];
 
-        $result = array();
+        if(empty($userImg)){
+            $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" WHERE user_id = "' . $userId . '"';
+            $runQuery = $conn->query($getData);
 
-        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $row;
+            $result = array();
+
+            while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+                $result[] = $row;
+            }
+
+            return $result;
+        } else {
+            $image = $userImg['name'];
+            // Moving img to /images folder
+            $img_path = '../images/';
+            move_uploaded_file($userImg['tmp_name'], $img_path.$image);
+
+            $getDataImg = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_avatar = "' . $image . '" WHERE user_id = "' . $userId . '"';
+            $runQueryImg = $conn->query($getDataImg);
+
+            $result = array();
+
+            while ($row = $runQueryImg->fetch(PDO::FETCH_ASSOC)) {
+                $result[] = $row;
+                var_dump($result);
+            }
+
+            return $result;
         }
-
-        return $result;
+        
     };
 
     function getUser($conn) {
