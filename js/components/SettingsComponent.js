@@ -18,7 +18,7 @@ export default {
                     <img :src="'images/' + userToChange.user_avatar" alt="profile-img">
                 </div>
                 <div class="change-details">
-                    <form @submit.prevent="updateAdminUser()">
+                    <form @submit.prevent="updateAdminUser()" enctype="multipart/form-data">
                         <label for="">Name</label>
                         <input type="text" v-model="userToChange['user_fname']">
                         <label>Image</label>
@@ -126,13 +126,22 @@ export default {
             this.$root.$data.preauthenticated = false;
         },
         updateAdminUser(){
+            let formDataThree = new FormData();
+            let newImgTwo = this.userToChange['user_avatar'];
+            formDataThree.append("image", newImgTwo);
             const url = `./includes/index.php?updateUser=${this.userToChange['user_id']}&updateName=${this.userToChange['user_fname']}&updatePermissions=${this.userToChange['user_permissions']}`;
-            fetch(url)
+            fetch(url,{
+                method: "POST",
+                body: formDataThree
+            })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
             })
             .catch((err) => {console.error(err)})
+
+            location.reload();
+
             document.querySelector('.profile-change-section-admin').classList.remove('profile-change-section-show');
             this.userToChange = [];
         },
@@ -149,6 +158,8 @@ export default {
             })
             .catch((err) => {console.error(err)})
             document.querySelector('.profile-change-section-admin').classList.remove('profile-change-section-show');
+
+            location.reload();
             
             this.getAllUsers();
         },
@@ -181,6 +192,7 @@ export default {
                 updatedUser['user_fname'] = this.currentUser['user_fname'];
                 localStorage.setItem('AuthenticatedUser', JSON.stringify(updatedUser));
             }
+            location.reload();
             // Send to catalog page
             alert('user updated');
             this.$router.push({ name: 'catalog', params: {age: this.currentUser['user_permissions']}});

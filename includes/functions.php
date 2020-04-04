@@ -123,8 +123,19 @@
     };
 
     function updateUser($conn, $userId, $userName, $userPermissions){
-        $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_permissions = "' . $userPermissions . '" WHERE user_id = "' . $userId . '"';
-        $runQuery = $conn->query($getData);
+        $userImg = $_FILES["image"];
+        var_dump($userImg);
+        if(empty($userImg)){
+            $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_permissions = "' . $userPermissions . '" WHERE user_id = "' . $userId . '"';
+            $runQuery = $conn->query($getData);
+        } else {
+            $image = $userImg['name'];
+            $img_path = '../images/';
+            move_uploaded_file($userImg['tmp_name'], $img_path.$image);
+
+            $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_permissions = "' . $userPermissions . '" , user_avatar = "' . $image . '" WHERE user_id = "' . $userId . '"';
+            $runQuery = $conn->query($getData);
+        }
 
         $result = array();
 
