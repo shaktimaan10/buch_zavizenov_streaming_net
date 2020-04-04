@@ -21,6 +21,8 @@ export default {
                     <form @submit.prevent="updateAdminUser()">
                         <label for="">Name</label>
                         <input type="text" v-model="userToChange['user_fname']">
+                        <label>Image</label>
+                        <input type="file" @change="uploadedImage">
                         <label for="">Parental control</label>
                         <select id="parental-contro" name="restriction" v-model="userToChange['user_permissions']">
                             <option value="0">0</option>
@@ -39,12 +41,12 @@ export default {
         <section class="profile-change-section profile-change-section-user profile-change-section-show" v-if="currentUser['user_isadmin'] == 0">
             <div class="container profile-change-container">
                 <div class="change-img">
-                    <img :src="'images/'+ userToChange.user_avatar" alt="profile-img">
+                    <img :src="'images/'+ currentUser.user_avatar" alt="profile-img">
                 </div>
                 <div class="change-details">
                     <form @submit.prevent="updateUser()" enctype="multipart/form-data">
                         <label for="">Name</label>
-                        <input type="text" v-model="userToChange['user_fname']">
+                        <input type="text" v-model="currentUser['user_fname']">
                         <label>Image</label>
                         <input type="file" @change="uploadedImage">
                         <button type="submit">Save changes</button>
@@ -152,8 +154,8 @@ export default {
         },
         updateUser(){
             let formDataTwo = new FormData();
-            let newImg = this.currentUser['user_avatar'];
-            formDataTwo.append("image", this.currentUser['user_avatar']);
+            let newImg = this.userToChange['user_avatar'];
+            formDataTwo.append("image", newImg);
             const url = `./includes/index.php?updateUserId=${this.currentUser['user_id']}&updateName=${this.currentUser['user_fname']}`;
 
             fetch(url,{
@@ -168,9 +170,17 @@ export default {
 
             // set new image in localStorage
             let updatedUser = JSON.parse(localStorage.getItem("AuthenticatedUser"));
-            updatedUser['user_avatar'] = newImg['name'];
-            localStorage.setItem('AuthenticatedUser', JSON.stringify(updatedUser));
-
+            console.log(newImg);
+            if(newImg['name']){
+                updatedUser['user_avatar'] = newImg['name'];
+                updatedUser['user_fname'] = this.currentUser['user_fname'];
+                localStorage.setItem('AuthenticatedUser', JSON.stringify(updatedUser));
+            } else {
+                console.log(newImg);
+                updatedUser['user_avatar'] = newImg;
+                updatedUser['user_fname'] = this.currentUser['user_fname'];
+                localStorage.setItem('AuthenticatedUser', JSON.stringify(updatedUser));
+            }
             // Send to catalog page
             alert('user updated');
             this.$router.push({ name: 'catalog', params: {age: this.currentUser['user_permissions']}});
@@ -188,7 +198,8 @@ export default {
         },
         uploadedImage(event){
             // get image to user profile for update
-            this.currentUser['user_avatar'] = event.target.files[0];
-        }
+            this.userToChange['user_avatar'] = event.target.files[0];
+        },
+
     }
 }
