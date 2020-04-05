@@ -11,13 +11,13 @@ export default {
         <section class="reason-section">
             <div class="container reason-section-container reason-section-container-one">
                 <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
+                <!-- Image from https://www.pngfuel.com/free-png/niqta -->
+                    <img src="images/tarantino.png" alt="device-mockup">
                 </div>
                 <div class="reason-section-text">
-                    <h2>This is why!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    <h2>A lot of new movies</h2>
+                    <p>
+                        Browse from a diverse movie, music and tv show database.
                     </p>
                 </div>
             </div>
@@ -25,13 +25,13 @@ export default {
         <section class="reason-section">
             <div class="container reason-section-container">
                 <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
+                    <!-- Image from https://www.pngwave.com/png-clip-art-zhltm -->
+                    <img src="images/mia-wallace" alt="device-mockup">
                 </div>
                 <div class="reason-section-text">
-                    <h2>This is why2!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    <h2>Parental control</h2>
+                    <p>
+                        All new child profiles with password-protected parent control. You can select from a variety of maturity level, so you have control over the content your children watch.
                     </p>
                 </div>
             </div>
@@ -39,13 +39,13 @@ export default {
         <section class="reason-section">
             <div class="container reason-section-container">
                 <div class="reason-section-img">
-                    <img src="images/device-mockup.jpg" alt="device-mockup">
+                <!-- Image from https://www.pinterest.cl/pin/558446422543823552/ -->
+                    <img src="images/vincent.png" alt="device-mockup">
                 </div>
                 <div class="reason-section-text">
-                    <h2>This is why3!</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    <h2>Genre filters</h2>
+                    <p>
+                        Watch all media content based on your preferred genre, favourite cast and our tuned recommendations.
                     </p>
                 </div>
             </div>
