@@ -79,6 +79,24 @@
         echo json_encode($deletedUser);
     }; 
 
+    if(isset($_GET["checkLike"])) {
+        $chekedResult = checkLike($pdo, $_GET['userId'], $_GET['contentType'], $_GET['contentId']);
+     
+        echo json_encode($chekedResult);
+    }; 
+
+    if(isset($_GET["addLike"])) {
+        $addedLike = addLike($pdo, $_GET['userId'], $_GET['contentType'], $_GET['contentId']);
+     
+        echo json_encode($addedLike);
+    }; 
+
+    if(isset($_GET["removeLike"])) {
+        $removedLike = removeLike($pdo, $_GET['userId'], $_GET['contentType'], $_GET['contentId']);
+     
+        echo json_encode($removedLike);
+    };
+
     if (isset($_GET['user'])) {
         $user = getUser($pdo);
 

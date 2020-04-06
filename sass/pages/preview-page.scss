@@ -65,6 +65,69 @@ body{
     align-items: flex-end;
 }
 
+.social-media-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top:30px;
+    left:50%;
+    transform: translateX(-50%);
+    z-index:20;
+}
+
+.social-media-left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-media-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: $purple;
+    border-radius: 8px;
+}
+
+.like-btn{
+    height:35px;
+    width:35px;
+
+    svg{
+        height:20px;
+        transition: 0.7s all ease-in-out;
+
+        path{
+            transition: 0.7s all ease-in-out;
+        }
+    }
+}
+
+.like-btn-active{
+    svg{
+        path{
+            fill: #FF1B4A;
+        }
+    }
+}
+
+.read-reviews-btn{
+    text-align: center;
+    height:35px;
+    width:95px;
+    margin-left:10px;
+}
+
+.leave-review-btn{
+    text-align: center;
+    height:35px;
+    width:110px;
+    margin-left: 10px;
+}
+
 .preview-section-play{
     position: absolute;
     top:50%;
@@ -150,6 +213,23 @@ body{
         height: calc(100vh - 110px);
     }
 
+    .like-btn{
+        height:50px;
+        width:50px;
+    }
+
+    .read-reviews-btn{
+        height:50px;
+        width:135px;
+        margin-left:20px;
+    }
+
+    .leave-review-btn{
+        height:50px;
+        width:135px;
+        margin-left:20px;
+    }
+
     .preview-section-bg{
         width:300%;
         height:300%;
@@ -199,6 +279,30 @@ body{
         p{
             font-size:16px;
         }
+    }
+
+    .social-media-btn{
+        cursor: pointer;
+        transition: 0.7s all ease-in-out;
+    }
+
+    .social-media-btn:hover{
+        background-color: #441e61;
+        -webkit-box-shadow: 0px 1px 10px 5px rgba(102,45,145,.4);
+        -moz-box-shadow: 0px 1px 10px 5px rgba(102,45,145,.4);
+        box-shadow: 0px 1px 10px 5px rgba(102,45,145,.4);
+    }
+
+    .like-btn{
+        height:40px;
+    }
+
+    .read-reviews-btn{
+        height:40px;
+    }
+
+    .leave-review-btn{
+        height: 40px;
     }
 
     .preview-content-line{

@@ -124,7 +124,7 @@
 
     function updateUser($conn, $userId, $userName, $userPermissions){
         $userImg = $_FILES["image"];
-        var_dump($userImg);
+        // var_dump($userImg);
         if(empty($userImg)){
             $getData = 'UPDATE tbl_users SET user_fname = "' . $userName . '" , user_permissions = "' . $userPermissions . '" WHERE user_id = "' . $userId . '"';
             $runQuery = $conn->query($getData);
@@ -186,12 +186,37 @@
 
             while ($row = $runQueryImg->fetch(PDO::FETCH_ASSOC)) {
                 $result[] = $row;
-                var_dump($result);
+                // var_dump($result);
             }
 
             return $result;
         }
         
+    };
+
+    function checkLike($conn, $userId, $contentType, $contentId){
+        $getData = 'SELECT * FROM tbl_like WHERE like_content_type = "' . $contentType . '" AND like_content_id = "' . $contentId . '" AND like_user_id = "' . $userId . '"';
+        $runQuery = $conn->query($getData);
+
+        $row = $runQuery->fetch(PDO::FETCH_ASSOC);
+    
+        return $row;
+    };
+
+    function removeLike($conn, $userId, $contentType, $contentId){
+        $getData = 'DELETE FROM tbl_like WHERE like_content_type = "' . $contentType . '" AND like_content_id = "' . $contentId . '" AND like_user_id = "' . $userId . '"';
+        $runQuery = $conn->query($getData);
+
+        $row = $runQuery->fetch(PDO::FETCH_ASSOC);
+    
+        return $row;
+    };
+
+    function addLike($conn, $userId, $contentType, $contentId){
+        $getData = 'INSERT INTO tbl_like (like_content_type, like_content_id, like_user_id) VALUES ("' . $contentType . '" ,"' . $contentId . '" ,"' . $userId . '")';
+        $runQuery = $conn->query($getData);
+        
+        return $runQuery;
     };
 
     function getUser($conn) {
