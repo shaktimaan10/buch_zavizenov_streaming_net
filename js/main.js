@@ -1,15 +1,13 @@
 // Import all components
 import LoginComponent from "./components/LoginComponent.js";
 import CatalogComponent from "./components/CatalogComponent.js";
-import MoviePreviewComponent from "./components/MoviePreviewComponent.js";
-import MusicPreviewComponent from "./components/MusicPreviewComponent.js";
-import TvPreviewComponent from "./components/TvPreviewComponent.js";
 import StartComponent from "./components/StartComponent.js";
 import SettingsComponent from "./components/SettingsComponent.js";
 import MovieTypeComponent from "./components/MovieTypeComponent.js";
 import MusicTypeComponent from "./components/MusicTypeComponent.js";
 import TvTypeComponent from "./components/TvTypeComponent.js";
 import AllUsersComponent from "./components/AllUsersComponent.js";
+import PreviewComponent from "./components/PreviewComponent.js";
 
 // Vue component
 const router = new VueRouter({
@@ -18,15 +16,13 @@ const router = new VueRouter({
       { path: '/', redirect: { name: "start" } },
       { path: '/catalog/:age', name:"catalog", component: CatalogComponent, meta: { requiresAuth: true }},
       { path: '/start', name:"start", component: StartComponent},
-      { path: '/singleMovie/:cId', name:"singleMovie", component: MoviePreviewComponent, meta: { requiresAuth: true }},
-      { path: '/singleMusic/:cId', name:"singleMusic", component: MusicPreviewComponent, meta: { requiresAuth: true }},
-      { path: '/singleTv/:cId', name:"singleTv", component: TvPreviewComponent, meta: { requiresAuth: true }},
       { path: '/movieType/:type/:age', name:"movieType", component: MovieTypeComponent, meta: { requiresAuth: true }},
       { path: '/musicType/:type/:age', name:"musicType", component: MusicTypeComponent, meta: { requiresAuth: true }},
       { path: '/tvType/:type/:age', name:"tvType", component: TvTypeComponent, meta: { requiresAuth: true }},
       { path: '/login', name: "login", component: LoginComponent },
       { path: '/allusers/:group', name: "allusers", component: AllUsersComponent, meta: { requiresAuth: true }},
-      { path: '/settings/:group', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }}
+      { path: '/settings/:group', name: "settings", component: SettingsComponent, meta: { requiresAuth: true }},
+      { path: '/preview/:type/:cId', name:"preview", component: PreviewComponent, meta: { requiresAuth: true }},
     ]
 });
 

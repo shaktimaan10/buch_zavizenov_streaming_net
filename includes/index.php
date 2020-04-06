@@ -25,20 +25,8 @@
         echo json_encode($recom);
     };
 
-    if(isset($_GET["getSingleMovie"])) {
-        $single = getSingleMovie($pdo, $_GET['getSingleMovie']);
-     
-        echo json_encode($single);
-    };
-    
-    if(isset($_GET["getSingleMusic"])) {
-        $single = getSingleMusic($pdo, $_GET['getSingleMusic']);
-     
-        echo json_encode($single);
-    }; 
-
-    if(isset($_GET["getSingleTv"])) {
-        $single = getSingleTv($pdo, $_GET['getSingleTv']);
+    if(isset($_GET["getSingleContent"])) {
+        $single = getSingleContent($pdo, $_GET['getSingleContent'], $_GET['table']);
      
         echo json_encode($single);
     }; 

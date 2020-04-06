@@ -57,43 +57,15 @@
         return $result;
     };
 
-    function getSingleMovie($conn, $con_id){
-        $getData = 'SELECT * FROM tbl_movie WHERE movie_id = "' . $con_id . '"';
+    function getSingleContent($conn, $con_id, $table){
+        $getData = 'SELECT * FROM tbl_'. $table .' WHERE ' . $table . '_id = "' . $con_id . '"';
         $runQuery = $conn->query($getData);
 
         $result = array();
 
-        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $row;
-        }
+        $row = $runQuery->fetch(PDO::FETCH_ASSOC);
 
-        return $result;
-    };
-
-    function getSingleMusic($conn, $con_id){
-        $getData = 'SELECT * FROM tbl_music WHERE music_id = "' . $con_id . '"';
-        $runQuery = $conn->query($getData);
-
-        $result = array();
-
-        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $row;
-        }
-
-        return $result;
-    };
-
-    function getSingleTv($conn, $con_id){
-        $getData = 'SELECT * FROM tbl_tv WHERE tv_id = "' . $con_id . '"';
-        $runQuery = $conn->query($getData);
-
-        $result = array();
-
-        while ($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $row;
-        }
-
-        return $result;
+        return $row;
     };
 
     function getSingleType($conn, $con_id, $con_age){
