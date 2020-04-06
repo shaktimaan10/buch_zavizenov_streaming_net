@@ -51,6 +51,11 @@ export default {
                     </div>
                     <div class="social-media-right">
                         <div id="fb-root"></div>
+                        <div class="fb-like" 
+                            :data-href="'http://localhost/buch_zavizenov_streaming_net/#/preview/' + singleType + '/' + singleId" 
+                            data-width="" data-layout="button" 
+                            data-action="like" data-size="large" data-share="false">
+                        </div>
                         <div class="fb-share-button" 
                             :data-href="'http://localhost/buch_zavizenov_streaming_net/#/preview/' + singleType + '/' + singleId" 
                             data-layout="button"
