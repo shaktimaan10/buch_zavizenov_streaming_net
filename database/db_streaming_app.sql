@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 06, 2020 at 12:51 AM
+-- Generation Time: Apr 06, 2020 at 03:47 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `tbl_like` (
   `like_content_id` int(10) NOT NULL,
   `like_user_id` int(10) NOT NULL,
   PRIMARY KEY (`like_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_like`
@@ -48,7 +48,8 @@ INSERT INTO `tbl_like` (`like_id`, `like_content_type`, `like_content_id`, `like
 (6, 'music', 16, 3),
 (9, 'movie', 17, 2),
 (10, 'movie', 18, 2),
-(11, 'movie', 2, 3);
+(14, 'music', 12, 1),
+(12, 'movie', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -183,8 +184,20 @@ CREATE TABLE IF NOT EXISTS `tbl_review` (
   `review_content_id` int(10) NOT NULL,
   `review_username` varchar(20) NOT NULL,
   `review_text` text NOT NULL,
+  `review-date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`review_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_review`
+--
+
+INSERT INTO `tbl_review` (`review_id`, `review_content_type`, `review_content_id`, `review_username`, `review_text`, `review-date`) VALUES
+(1, 'movie', 1, 'Alex', 'The best movie ever!!!', '2020-04-06 13:19:48'),
+(2, 'movie', 1, 'Nitya', 'wowow!', '2020-04-06 15:35:35'),
+(3, 'movie', 1, 'Gleb', 'This is awesome!!!', '2020-04-06 15:37:05'),
+(4, 'music', 12, 'Gleb', 'Legend!', '2020-04-06 15:42:23'),
+(5, 'tv', 1, 'Gleb', 'Funny)', '2020-04-06 15:45:07');
 
 -- --------------------------------------------------------
 
@@ -254,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_lname`, `user_uname`, `user_password`, `user_avatar`, `user_isadmin`, `user_permissions`, `user_group`) VALUES
 (1, 'Gleb', 'Ada', 'adAda', 'adAda', 'dog.jpg', 1, 5, 1),
 (2, 'Jane', 'Anderson', 'kid1', 'password', 'woman.jpg', 0, 1, 1),
-(3, 'Nitya', 'Buch', 'nb', 'password', 'dog2.jpg', 0, 5, 1),
+(3, 'Nitya', 'Buch', 'nb', 'password', 'man2.jpg', 0, 5, 1),
 (4, 'Joe', 'Anderson', 'kid2', 'password', 'default.png', 0, 2, 1),
 (6, 'Vito', 'Corleone', 'vito-corleone', 'password', 'vito.jpg', 1, 5, 2),
 (7, 'Michael', 'Corleone', 'michael', 'password', 'michael.jpg', 0, 5, 2),
