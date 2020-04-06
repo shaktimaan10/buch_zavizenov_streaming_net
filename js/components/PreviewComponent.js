@@ -50,6 +50,15 @@ export default {
                         </div>
                     </div>
                     <div class="social-media-right">
+                        <div id="fb-root"></div>
+                        <div class="fb-share-button" 
+                            :data-href="'http://localhost/buch_zavizenov_streaming_net/#/preview/' + singleType + '/' + singleId" 
+                            data-layout="button"
+                            data-size="large">
+                        </div>
+                        <a class="twitter-share-button"
+                        href="https://twitter.com/intent/tweet"
+                        data-size="large">Tweet</a>
                     </div>
                 </div>
                 <div @click="openLightbox()" class="preview-section-play">
@@ -89,6 +98,35 @@ export default {
         // this will fire when the component gets build
         this.getContentData();
         this.checkLike();
+    },
+
+    mounted(){
+        // Facebook API
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Twitter API
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+          
+            return t;
+        }(document, "script", "twitter-wjs"));
     },
 
     methods: {
