@@ -58,7 +58,7 @@ export default {
             .catch((err) => {console.error(err)})
         },
         goToSingleMovie(contentId){
-            this.$router.push({ name: 'singleTv', params: {cId: contentId}})
+            this.$router.push({ name: 'preview', params: {cId: contentId, type: 'tv'}})
         },
         filterContent(genre){
             if(genre === 'All'){

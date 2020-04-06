@@ -58,7 +58,7 @@ export default {
             .catch((err) => {console.error(err)})
         },
         goToSingleMovie(contentId){
-            this.$router.push({ name: 'singleMusic', params: {cId: contentId}})
+            this.$router.push({ name: 'preview', params: {cId: contentId, type: 'music'}})
         },
         filterContent(genre){
             if(genre === 'All'){
