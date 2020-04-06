@@ -233,6 +233,7 @@ body{
 
 .social-media-line{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -277,6 +278,17 @@ body{
         path{
             fill: #FF1B4A;
         }
+    }
+}
+
+.social-media-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top:20px;
+
+    .twitter-share-button{
+        margin-left: 15px;
     }
 }
 
@@ -453,6 +465,14 @@ body{
         height:50px;
         width:135px;
         margin-left:20px;
+    }
+
+    .social-media-line{
+        flex-wrap: nowrap;
+    }
+
+    .social-media-right{
+        margin-top:0px;
     }
 
     .preview-section-bg{
