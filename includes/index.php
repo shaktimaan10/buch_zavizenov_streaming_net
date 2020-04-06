@@ -85,6 +85,18 @@
         echo json_encode($removedLike);
     };
 
+    if(isset($_GET["getReviews"])) {
+        $allReviews = getReviews($pdo, $_GET['getReviews'], $_GET['type']);
+     
+        echo json_encode($allReviews);
+    };
+
+    if(isset($_GET["addReview"])) {
+        $addedReview = addReview($pdo);
+     
+        echo json_encode($addedReview);
+    };
+
     if (isset($_GET['user'])) {
         $user = getUser($pdo);
 

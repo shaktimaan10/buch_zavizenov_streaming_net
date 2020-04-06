@@ -207,3 +207,30 @@
 
         return $result;
     };
+
+    function addReview($conn){
+        $username = $_POST['username'];
+        $contentType = $_POST['contentType'];
+        $contentId = $_POST['contentID'];
+        $reviewText = $_POST['reviewText'];
+
+        $getData = 'INSERT INTO tbl_review (review_content_type, review_content_id, review_username, review_text) VALUES ("' . $contentType . '" ,"' . $contentId . '" ,"' . $username . '" ,"' . $reviewText . '")';
+        $runQuery = $conn->query($getData);
+        
+        return $runQuery;
+    };
+
+    function getReviews($conn, $reviewId, $contentType){
+        $getData = 'SELECT * FROM tbl_review WHERE review_content_id = "' . $reviewId . '" AND review_content_type = "' . $contentType . '" ORDER BY review_id DESC';
+        $runQuery = $conn->query($getData);
+
+        $result = array();
+
+        while($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+            // push each row of data into our arry to make it easy to iterate over
+            $result[] = $row;
+        }
+
+        return $result;
+    };
+
