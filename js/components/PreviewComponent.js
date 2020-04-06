@@ -5,8 +5,7 @@ export default {
             <div @click="closeLightbox()" class="preview-section-cross">
                 <img src="images/cross.svg" alt="close-icon">
             </div>
-            <video class="preview-section-lightbox-video" controls>
-                <source :src="'video/' + singleContent[0].movie_video" type="video/mp4">
+            <video class="preview-section-lightbox-video" controls :src="'./video/' + singleContent[singleType + '_video']">
             </video>
         </div>
         <section class="preview-section">
@@ -25,23 +24,24 @@ export default {
                             <p>Leave a review</p>
                         </div>
                     </div>
-                    
+                    <div class="social-media-right">
+                    </div>
                 </div>
                 <div @click="openLightbox()" class="preview-section-play">
                     <img src="images/play.svg" alt="play btn">
                 </div>
                 <div class="preview-section-bg-overlay"></div>
-                <video class="preview-section-bg" autoplay muted loop>
-                    <source :src="'video/' + singleContent[0].movie_video" type="video/mp4">
+                <video class="preview-section-bg" autoplay muted loop :src="'./video/' + singleContent[singleType + '_video']">
                 </video>
                 <div class="container preview-section-container">
                     <div class="preview-content">
-                        <h1>{{singleContent[0].movie_name}}</h1>
+                        <h1>{{singleContent[singleType + '_name']}}</h1>
                         <div class="preview-content-line">
-                            <h3>{{singleContent[0].movie_genre}}</h3>
-                            <h3>{{singleContent[0].movie_date}}</h3>
+                            <h3>{{singleContent[singleType + '_genre']}}</h3>
+                            <h3>{{singleContent[singleType + '_date']}}</h3>
                         </div>
-                        <p>{{singleContent[0].movie_desc}}</p>
+                        <p v-if="singleType != 'music'">{{singleContent[singleType + '_desc']}}</p>
+                        <p v-if="singleType == 'music'">{{singleContent[singleType + '_author']}}</p>
                     </div> 
                 </div>
         </section>
@@ -51,6 +51,7 @@ export default {
     data: function() {
         return {   
             singleId: this.$route.params.cId,
+            singleType: this.$route.params.type,
             singleContent: [],
             itemLiked: false
         }
@@ -58,13 +59,13 @@ export default {
 
     created: function() {
         // this will fire when the component gets build
-        this.getContentData(this.singleId);
+        this.getContentData();
         this.checkLike();
     },
 
     methods: {
-        getContentData(singleid) {
-            const url = `./includes/index.php?getSingleMovie=${singleid}`;
+        getContentData() {
+            const url = `./includes/index.php?getSingleContent=${this.singleId}&table=${this.singleType}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -81,7 +82,7 @@ export default {
             document.querySelector('.preview-section-lightbox video').currentTime = 0;
         },
         checkLike(){
-            const url = `./includes/index.php?checkLike=1&userId=${this.$root.$data.user['user_id']}&contentType=movie&contentId=${this.singleId}`;
+            const url = `./includes/index.php?checkLike=1&userId=${this.$root.$data.user['user_id']}&contentType=${this.singleType}&contentId=${this.singleId}`;
             fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -96,7 +97,7 @@ export default {
         likeItem(){
             if(this.itemLiked){
                 // remove like from db
-                const url = `./includes/index.php?removeLike=1&userId=${this.$root.$data.user['user_id']}&contentType=movie&contentId=${this.singleId}`;
+                const url = `./includes/index.php?removeLike=1&userId=${this.$root.$data.user['user_id']}&contentType=${this.singleType}&contentId=${this.singleId}`;
                 fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -105,7 +106,7 @@ export default {
                 .catch((err) => {console.error(err)})
             } else {
                 // add like to db
-                const url = `./includes/index.php?addLike=1&userId=${this.$root.$data.user['user_id']}&contentType=movie&contentId=${this.singleId}`;
+                const url = `./includes/index.php?addLike=1&userId=${this.$root.$data.user['user_id']}&contentType=${this.singleType}&contentId=${this.singleId}`;
                 fetch(url)
                 .then(res => res.json())
                 .then(data => {

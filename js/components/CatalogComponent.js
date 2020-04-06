@@ -217,13 +217,13 @@ export default{
             }
         },
         goToSingleMovie(contentId){
-            this.$router.push({ name: 'singleMovie', params: {cId: contentId}})
+            this.$router.push({ name: 'preview', params: {cId: contentId, type: 'movie'}})
         },
         goToSingleMusic(contentId){
-            this.$router.push({ name: 'singleMusic', params: {cId: contentId}})
+            this.$router.push({ name: 'preview', params: {cId: contentId, type: 'music'}})
         },
         goToSingleTv(contentId){
-            this.$router.push({ name: 'singleTv', params: {cId: contentId}})
+            this.$router.push({ name: 'preview', params: {cId: contentId, type: 'tv'}})
         },
         movieSliderRight(){
             let movieSlider = document.querySelector('#movies-section .content-slider-content');
